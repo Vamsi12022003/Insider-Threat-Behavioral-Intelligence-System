@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Insider Threat System - Login</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 400px; margin: 60px auto; }
+  h2 { text-align: center; }
+  input, select, button { width: 100%; padding: 8px; margin: 6px 0; box-sizing: border-box; }
+  button { background: #2563eb; color: white; border: none; cursor: pointer; }
+  button:hover { background: #1d4ed8; }
+  .toggle { text-align: center; margin-top: 10px; cursor: pointer; color: #2563eb; }
+  #message { text-align: center; margin-top: 10px; font-weight: bold; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<h2 id="formTitle">Login</h2>
+<div id="loginForm">
+  <input type="text" id="loginUsername" placeholder="Username">
+  <input type="password" id="loginPassword" placeholder="Password">
+  <button onclick="login()">Login</button>
+</div>
+<div id="registerForm" class="hidden">
+  <input type="text" id="regUsername" placeholder="Username">
+  <input type="email" id="regEmail" placeholder="Email">
+  <input type="password" id="regPassword" placeholder="Password">
+  <select id="regRole">
+    <option value="security_analyst">Security Analyst</option>
+    <option value="soc_engineer">SOC Engineer</option>
+    <option value="security_manager">Security Manager</option>
+    <option value="admin">Admin</option>
+  </select>
+  <button onclick="register()">Register</button>
+</div>
+<div class="toggle" onclick="toggleForm()">
+  <span id="toggleText">Need an account? Register</span>
+</div>
+<div id="message"></div>
+<script>
+  const API_BASE = "http://127.0.0.1:8000";
+  let showingLogin = true;
+  function toggleForm() {
+    showingLogin = !showingLogin;
+    document.getElementById("loginForm").classList.toggle("hidden");
+    document.getElementById("registerForm").classList.toggle("hidden");
+    document.getElementById("formTitle").innerText = showingLogin ? "Login" : "Register";
+    document.getElementById("toggleText").innerText = showingLogin
+      ? "Need an account? Register"
+      : "Already have an account? Login";
+    document.getElementById("message").innerText = "";
+  }
+  async function register() {
+    const username = document.getElementById("regUsername").value;
+    const email = document.getElementById("regEmail").value;
+    const password = document.getElementById("regPassword").value;
+    const role = document.getElementById("regRole").value;
+    try {
+      const res = await fetch(`${API_BASE}/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, email, password, role })
+      });
+      const data = await res.json();
+      if (res.ok) {
+        document.getElementById("message").style.color = "green";
+        document.getElementById("message").innerText = "Registered! You can now log in.";
+        toggleForm();
+      } else {
+        document.getElementById("message").style.color = "red";
+        document.getElementById("message").innerText = data.detail || "Registration failed.";
+      }
+    } catch (err) {
+      document.getElementById("message").style.color = "red";
+      document.getElementById("message").innerText = "Could not reach server. Is the backend running?";
+    }
+  }
+  async function login() {
+    const username = document.getElementById("loginUsername").value;
+    const password = document.getElementById("loginPassword").value;
+    try {
+      const res = await fetch(`${API_BASE}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      });
+      const data = await res.json();
+      if (res.ok) {
+        localStorage.setItem("access_token", data.access_token);
+        document.getElementById("message").style.color = "green";
+        document.getElementById("message").innerText = "Login successful! Token stored.";
+      } else {
+        document.getElementById("message").style.color = "red";
+        document.getElementById("message").innerText = data.detail || "Login failed.";
+      }
+    } catch (err) {
+      document.getElementById("message").style.color = "red";
+      document.getElementById("message").innerText = "Could not reach server. Is the backend running?";
+    }
+  }
+</script>
+</body>
+</html>
