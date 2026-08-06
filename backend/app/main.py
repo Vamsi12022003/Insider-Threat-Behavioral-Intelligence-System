@@ -1,3 +1,6 @@
+import sys, os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "ml")))
+
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordRequestForm
@@ -5,6 +8,7 @@ from sqlalchemy.orm import Session
 from app import models, schemas, auth
 from app.database import engine, get_db
 from app.rbac import require_role, get_current_user
+from risk_api import router as risk_router
 
 models.Base.metadata.create_all(bind=engine)
 app = FastAPI(title="Insider Threat Behavioral Intelligence System")
@@ -14,6 +18,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(risk_router)
 
 @app.post("/register", response_model=schemas.UserOut)
 def register(user: schemas.UserCreate, db: Session = Depends(get_db)):
