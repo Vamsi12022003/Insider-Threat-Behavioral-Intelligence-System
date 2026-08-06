@@ -8,16 +8,23 @@ Covers all 5 milestone tasks:
 3. Anomaly detection workflows   -> run_isolation_forest()
 4. Threat detection models       -> IsolationForest model itself
 5. Anomaly reports                -> generate_anomaly_report()
+
+Also saves the trained model + per-user baselines to disk so a separate
+live-prediction endpoint (predict_api.py) can score new incoming rows
+without retraining.
 """
 
 import pandas as pd
 import numpy as np
+import joblib
 from sklearn.ensemble import IsolationForest
 
 LOGON_PATH = "../datasets/logon.csv"
 DEVICE_PATH = "../datasets/device.csv"
 OUTPUT_REPORT = "anomaly_report.csv"
 OUTPUT_FEATURES = "user_daily_features.csv"
+OUTPUT_MODEL = "insider_model.pkl"
+OUTPUT_BASELINES = "user_baselines.csv"
 
 
 def load_data():
@@ -128,6 +135,22 @@ def generate_anomaly_report(features, feature_cols):
     return report
 
 
+# ---------------------------------------------------------------------
+# Save trained model + per-user baselines for live prediction
+# (used by ml/predict_api.py so new rows can be scored without retraining)
+# ---------------------------------------------------------------------
+def save_model_and_baselines(features, model, feature_cols):
+    joblib.dump(model, OUTPUT_MODEL)
+
+    baseline_cols = ["user"] + [
+        c for c in features.columns if c.endswith("_mean") or c.endswith("_std")
+    ]
+    baselines_df = features[baseline_cols].drop_duplicates(subset="user")
+    baselines_df.to_csv(OUTPUT_BASELINES, index=False)
+
+    return baselines_df
+
+
 def main():
     print("Loading data...")
     logon, device = load_data()
@@ -153,6 +176,12 @@ def main():
 
     print(f"\nSaved: {OUTPUT_REPORT} ({len(report)} rows)")
     print(f"Saved: {OUTPUT_FEATURES} ({len(features)} rows)")
+
+    print("\nSaving trained model and per-user baselines for live prediction...")
+    baselines_df = save_model_and_baselines(features, model, feature_cols)
+    print(f"Saved: {OUTPUT_MODEL}")
+    print(f"Saved: {OUTPUT_BASELINES} ({len(baselines_df)} users)")
+
     print("\nTop 10 most anomalous user-days:")
     print(report.head(10)[["user", "day", "anomaly_score", "primary_reason"]].to_string(index=False))
 
