@@ -1,0 +1,12 @@
+# Don't copy these into the Docker build context - keeps image small,
+# avoids baking in local venvs, caches, and test scratch files.
+
+backend/venv/
+**/__pycache__/
+**/*.pyc
+.git/
+.gitignore
+frontend/node_modules/
+ml/test_predict_sample.csv
+ml/test_predict_anomaly.csv
+*.log
