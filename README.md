@@ -10,40 +10,67 @@ This project is being developed as part of the Infosys Springboard AI Internship
 
 Traditional security tools focus on external threats. This system focuses on the harder problem — detecting suspicious behavior from within an organization by:
 
-- Continuously monitoring employee digital activity (logins, file access, email, device usage)
+- Continuously monitoring employee digital activity (logins, device usage)
 - Building individual behavioral baselines per employee
 - Detecting statistically significant deviations from normal behavior
 - Scoring and prioritizing insider risk
 - Supporting security teams with investigation and alerting workflows
+- Demonstrating real-time-style prediction on incoming activity data
 
 ## Tech Stack
 
-**Backend:** Python, FastAPI, JWT Authentication
-**Database:** PostgreSQL
-**Frontend:** JavaScript (React planned)
-**Machine Learning:** Scikit-learn, Isolation Forest, Pandas, NumPy
-**Dev Tools:** Git, GitHub, VS Code, Docker (planned)
+**Backend:** Python, FastAPI, JWT Authentication (OAuth2 password flow)
+**Database:** SQLite (dev) — see [Known Gaps](#known-gaps)
+**Frontend:** HTML (login page only) — see [Known Gaps](#known-gaps)
+**Machine Learning:** Scikit-learn (Isolation Forest), Pandas, NumPy, Joblib
+**Deployment:** Docker (verified working locally)
+**Testing:** pytest (17 automated tests)
+**Dev Tools:** Git, GitHub, VS Code
 
 ## Project Status
 
-🚧 **In Development — Milestone 2 of 4**
+🚧 **In Development — Milestones 1–3 substantially complete, Milestone 4 in progress**
 
 | Milestone | Focus | Status |
 |-----------|-------|--------|
-| Milestone 1 (Week 1-2) | Project setup, authentication, role-based access | ✅ Complete |
-| Milestone 2 (Week 3-4) | Behavioral profiling & anomaly detection | 🔄 In Progress |
-| Milestone 3 (Week 5-6) | Risk scoring & threat investigation | ⬜ Pending |
-| Milestone 4 (Week 7-8) | Dashboards, testing & deployment | ⬜ Pending |
+| Milestone 1 (Week 1-2) | Project setup, auth, RBAC, DB schema doc, wireframes | ✅ Complete (log ingestion still manual) |
+| Milestone 2 (Week 3-4) | Behavioral profiling & anomaly detection | ✅ Complete |
+| Milestone 3 (Week 5-6) | Risk scoring, threat investigation, UEBA, live prediction | ✅ Complete (scoped — see gaps) |
+| Milestone 4 (Week 7-8) | Dashboards, testing & deployment | 🔄 In Progress |
 
-## Features (Planned & In Progress)
+## Features
 
-- ✅ Secure user registration & login (JWT-based authentication)
-- ✅ Role-based access control (Security Analyst, SOC Engineer, Security Manager, Admin)
-- 🔄 Behavioral baseline generation per employee
-- 🔄 Anomaly detection engine (Isolation Forest)
-- ⬜ Insider risk scoring engine
-- ⬜ Threat investigation & incident management
-- ⬜ Security dashboards for analysts and SOC teams
+**Done and verified:**
+- ✅ User registration & login (JWT-based authentication, OAuth2 password flow)
+- ✅ Role-based access control (Security Analyst, SOC Engineer, Security Manager, Admin) — tested with real 403/200 responses
+- ✅ Employee profile management (CRUD, role-restricted)
+- ✅ Behavioral baseline generation per employee (330k+ user-day profiles from CERT r4.2 logon/device data)
+- ✅ Anomaly detection engine (Isolation Forest, 2% flag rate, explainable per-anomaly reasons)
+- ✅ Insider risk scoring engine (Behavioral Anomalies only — see gaps)
+- ✅ Risk scores API + Streamlit analyst dashboard
+- ✅ Live prediction endpoint — feed a CSV, get per-row Insider/Normal predictions in real time
+- ✅ Threat investigation module — incident creation, evidence pulled from real anomaly history, status workflow
+- ✅ UEBA module — org-wide percentile comparison and monthly behavioral trend analysis (department-based peer comparison not possible — see gaps)
+- ✅ Docker deployment — builds and runs locally, verified via live API calls inside the container
+- ✅ Automated test suite — 17 pytest tests covering auth, RBAC, employees, risk scores, prediction, incidents, UEBA
+
+**Not yet done:**
+- ⬜ Automated/continuous activity log ingestion pipeline (currently a manual script)
+- ⬜ Cloud deployment (AWS/Azure)
+- ⬜ Frontend beyond the login page (Analyst/SOC/Employee/Incident screens exist only as wireframes + working APIs, not a real UI)
+- ⬜ Security Manager and Admin dashboards (not built, not yet wireframed)
+- ⬜ Reports & export system (PDF/Excel)
+- ⬜ Monitoring/structured logging, `/health` endpoint
+
+## Known Gaps
+
+Documented honestly rather than hidden:
+
+- **Risk scoring is scoped to Behavioral Anomalies only** (100% weight). The original 5-category weighted model (Privilege Misuse, Data Access Violations, Access Pattern Deviations, Historical Security Events) isn't computable — the CERT logon/device dataset doesn't contain that data.
+- **UEBA peer comparison is org-wide, not department-based** — the dataset has no department/role/org-chart fields, so true peer-group comparison isn't possible. Org-wide percentile comparison is used instead.
+- **Storage for risk scores, anomalies, and incidents is CSV/JSON files, not relational DB tables**, despite the original architecture diagram implying PostgreSQL/MongoDB. Only `users` and `employees` are real DB tables.
+- **No Asset Association** — `device_info` is a free-text field, not a structured/queryable asset table.
+- **DB schema documentation** exists at `docs/DATABASE_SCHEMA.md` and includes these gaps explicitly.
 
 ## Project Structure
 
@@ -51,28 +78,42 @@ Traditional security tools focus on external threats. This system focuses on the
 Insider-Threat-Behavioral-Intelligence-System/
 ├── backend/
 │   └── app/
-│       ├── auth/
-│       ├── models/
-│       ├── routes/
+│       ├── auth.py
+│       ├── models.py
+│       ├── schemas.py
+│       ├── rbac.py
 │       ├── database.py
 │       └── main.py
+├── ml/
+│   ├── behavioral_analytics.py
+│   ├── risk_scoring_engine.py
+│   ├── risk_api.py
+│   ├── risk_dashboard.py
+│   ├── predict_api.py
+│   ├── investigation_api.py
+│   └── ueba_api.py
 ├── frontend/
+│   └── index.html
 ├── datasets/
+├── docs/
+│   ├── DATABASE_SCHEMA.md
+│   └── wireframes/
+├── tests/
+│   └── test_api.py
 ├── docker/
-├── docker-compose.yml
+├── Dockerfile
 └── README.md
 ```
 
 ## Dataset
 
-This project uses a preprocessed, balanced subset derived from the **CERT Insider Threat Dataset**, a widely-used academic dataset for insider threat research covering login events, file access, email activity, and device usage.
+This project uses the **CERT Insider Threat Dataset (r4.2)** — logon and device activity logs — a widely-used academic dataset for insider threat research. Only `logon.csv` and `device.csv` were used; the full CERT release's ground-truth `answers/` folder (labeled malicious insiders) was not downloaded, so this project uses unsupervised anomaly detection rather than a labeled classifier.
 
 ## Getting Started
 
 ### Prerequisites
 - Python 3.10+
-- PostgreSQL
-- Node.js (for frontend)
+- Docker (optional, for containerized run)
 
 ### Backend Setup
 ```bash
@@ -80,7 +121,19 @@ cd backend
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
-uvicorn app.main:app --reload
+python -m uvicorn app.main:app --reload
+```
+
+### Running Tests
+```bash
+cd backend
+python -m pytest ../tests/
+```
+
+### Docker
+```bash
+docker build --no-cache -t insider-threat-api .
+docker run -p 8000:8000 insider-threat-api
 ```
 
 ## Author
