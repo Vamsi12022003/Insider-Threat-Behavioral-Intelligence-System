@@ -1,0 +1,21 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <rect width="900" height="600" fill="#ffffff" stroke="#333"/>
+  <rect x="0" y="0" width="900" height="50" fill="#eee" stroke="#999"/>
+  <text x="20" y="32" font-size="16" fill="#222">SOC Dashboard</text>
+  <rect x="20" y="70" width="420" height="240" fill="none" stroke="#333"/>
+  <text x="30" y="90" font-size="13" fill="#222">Behavioral anomalies (last 30 days)</text>
+  <polyline points="40,280 100,240 160,260 220,200 280,220 340,150 400,180" fill="none" stroke="#378ADD" stroke-width="2"/>
+  <text x="30" y="300" font-size="10" fill="#999">line chart -- anomaly count over time</text>
+  <rect x="460" y="70" width="420" height="240" fill="none" stroke="#333"/>
+  <text x="470" y="90" font-size="13" fill="#222">Active investigations</text>
+  <rect x="470" y="110" width="380" height="24" fill="none" stroke="#ddd"/>
+  <text x="480" y="126" font-size="11" fill="#555">INC-e4379114 -- MPM0220 -- investigating</text>
+  <rect x="470" y="140" width="380" height="24" fill="none" stroke="#ddd"/>
+  <text x="480" y="156" font-size="11" fill="#555">INC-a91f2c30 -- BSS0369 -- open</text>
+  <text x="470" y="200" font-size="10" fill="#999">(list continues)</text>
+  <rect x="20" y="330" width="860" height="230" fill="none" stroke="#333"/>
+  <text x="30" y="355" font-size="13" fill="#222">Threat intelligence feed</text>
+  <rect x="30" y="370" width="840" height="20" fill="none" stroke="#eee"/>
+  <text x="40" y="384" font-size="10" fill="#888">source -- indicator -- severity -- timestamp</text>
+  <text x="30" y="580" font-size="11" fill="#999">Wireframe -- low fidelity -- v0.1</text>
+</svg>

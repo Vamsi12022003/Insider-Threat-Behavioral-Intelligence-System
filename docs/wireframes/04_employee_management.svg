@@ -1,0 +1,31 @@
+<svg viewBox="0 0 900 550" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <rect width="900" height="550" fill="#ffffff" stroke="#333"/>
+  <rect x="0" y="0" width="900" height="50" fill="#eee" stroke="#999"/>
+  <text x="20" y="32" font-size="16" fill="#222">Employee Management (Admin)</text>
+  <rect x="700" y="65" width="180" height="34" fill="#333"/>
+  <text x="790" y="87" font-size="13" text-anchor="middle" fill="#fff">+ Add Employee</text>
+  <rect x="20" y="65" width="400" height="34" fill="none" stroke="#666"/>
+  <text x="30" y="87" font-size="12" fill="#888">Search by employee ID or name</text>
+  <rect x="20" y="115" width="860" height="400" fill="none" stroke="#333"/>
+  <line x1="20" y1="150" x2="880" y2="150" stroke="#ccc"/>
+  <text x="30" y="140" font-size="11" fill="#666">Employee ID</text>
+  <text x="180" y="140" font-size="11" fill="#666">Full name</text>
+  <text x="340" y="140" font-size="11" fill="#666">Department</text>
+  <text x="500" y="140" font-size="11" fill="#666">Designation</text>
+  <text x="650" y="140" font-size="11" fill="#666">Manager</text>
+  <text x="790" y="140" font-size="11" fill="#666">Actions</text>
+  <rect x="30" y="160" width="120" height="20" fill="none" stroke="#eee"/>
+  <rect x="180" y="160" width="140" height="20" fill="none" stroke="#eee"/>
+  <rect x="340" y="160" width="140" height="20" fill="none" stroke="#eee"/>
+  <rect x="500" y="160" width="130" height="20" fill="none" stroke="#eee"/>
+  <rect x="650" y="160" width="120" height="20" fill="none" stroke="#eee"/>
+  <text x="790" y="174" font-size="10" fill="#555">Edit | Delete</text>
+  <rect x="30" y="190" width="120" height="20" fill="none" stroke="#eee"/>
+  <rect x="180" y="190" width="140" height="20" fill="none" stroke="#eee"/>
+  <rect x="340" y="190" width="140" height="20" fill="none" stroke="#eee"/>
+  <rect x="500" y="190" width="130" height="20" fill="none" stroke="#eee"/>
+  <rect x="650" y="190" width="120" height="20" fill="none" stroke="#eee"/>
+  <text x="790" y="204" font-size="10" fill="#555">Edit | Delete</text>
+  <text x="30" y="240" font-size="10" fill="#999">(rows repeat -- paginated)</text>
+  <text x="30" y="540" font-size="11" fill="#999">Wireframe -- low fidelity -- v0.1 -- Delete restricted to admin role (RBAC enforced)</text>
+</svg>
