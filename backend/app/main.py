@@ -11,6 +11,7 @@ from app.rbac import require_role, get_current_user
 from risk_api import router as risk_router
 from predict_api import router as predict_router
 from investigation_api import router as investigation_router
+from ueba_api import router as ueba_router
 
 models.Base.metadata.create_all(bind=engine)
 app = FastAPI(title="Insider Threat Behavioral Intelligence System")
@@ -24,6 +25,7 @@ app.add_middleware(
 app.include_router(risk_router)
 app.include_router(predict_router)
 app.include_router(investigation_router)
+app.include_router(ueba_router)
 
 @app.post("/register", response_model=schemas.UserOut)
 def register(user: schemas.UserCreate, db: Session = Depends(get_db)):
