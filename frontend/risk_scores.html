@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Risk Scores Insider Threat Platform</title>
+<style>
+  body { background:#0d1117; color:#c9d1d9; font-family: 'Segoe UI', sans-serif; margin:0; padding:20px; }
+  h1 { color:#58a6ff; }
+  .summary { display:flex; gap:16px; margin-bottom:24px; }
+  .card { background:#161b22; border:1px solid #30363d; border-radius:8px; padding:16px 24px; flex:1; text-align:center; }
+  .card h2 { margin:0; font-size:28px; }
+  .Low h2 { color:#3fb950; }
+  .Medium h2 { color:#d29922; }
+  .High h2 { color:#f85149; }
+  .Critical h2 { color:#ff6b81; }
+  table { width:100%; border-collapse: collapse; background:#161b22; border:1px solid #30363d; }
+  th, td { padding:10px; text-align:left; border-bottom:1px solid #30363d; }
+  th { color:#58a6ff; }
+  tr:hover { background:#1c2128; }
+  input { padding:8px; margin-bottom:12px; width:250px; background:#0d1117; color:#c9d1d9; border:1px solid #30363d; border-radius:4px; }
+</style>
+</head>
+<body>
+<h1>Insider Risk Scores</h1>
+
+<div class="summary" id="summary"></div>
+
+<input type="text" id="searchBox" placeholder="Filter by user...">
+<table>
+  <thead>
+    <tr><th>User</th><th>Risk Score</th><th>Risk Level</th></tr>
+  </thead>
+  <tbody id="riskTableBody"></tbody>
+</table>
+
+<script>
+const API_BASE = "http://127.0.0.1:8000";
+
+async function loadSummary() {
+  const res = await fetch(`${API_BASE}/risk-scores/summary`);
+  const data = await res.json();
+  const summaryDiv = document.getElementById("summary");
+  summaryDiv.innerHTML = "";
+  for (const [level, count] of Object.entries(data)) {
+    summaryDiv.innerHTML += `<div class="card ${level}"><h2>${count}</h2><p>${level}</p></div>`;
+  }
+}
+
+async function loadRiskScores() {
+  const res = await fetch(`${API_BASE}/risk-scores`);
+  const data = await res.json();
+  renderTable(data);
+  document.getElementById("searchBox").addEventListener("input", (e) => {
+    const filtered = data.filter(row =>
+      row.user.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    renderTable(filtered);
+  });
+}
+
+function renderTable(rows) {
+  const tbody = document.getElementById("riskTableBody");
+  tbody.innerHTML = "";
+  rows.forEach(row => {
+    tbody.innerHTML += `<tr>
+      <td>${row.user}</td>
+      <td>${row.insider_risk_score ?? "-"}</td>
+      <td>${row.risk_category ?? "-"}</td>
+    </tr>`;
+  });
+}
+
+loadSummary();
+loadRiskScores();
+</script>
+</body>
+</html>

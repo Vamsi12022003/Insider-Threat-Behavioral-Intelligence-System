@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Insider Threat Dashboard</title>
+<style>
+  body { background:#0d1117; color:#c9d1d9; font-family:'Segoe UI',sans-serif; margin:0; padding:0; }
+  header { background:#161b22; border-bottom:1px solid #30363d; padding:16px 24px; }
+  header h1 { color:#58a6ff; font-size:20px; margin:0; }
+  nav { display:flex; gap:8px; padding:12px 24px; background:#0d1117; border-bottom:1px solid #30363d; }
+  nav button { background:#161b22; color:#c9d1d9; border:1px solid #30363d; padding:8px 16px; border-radius:6px; cursor:pointer; }
+  nav button.active { background:#1f6feb; color:white; border-color:#1f6feb; }
+  main { padding:24px; }
+  .tab { display:none; }
+  .tab.active { display:block; }
+  .summary { display:flex; gap:16px; margin-bottom:24px; }
+  .card { background:#161b22; border:1px solid #30363d; border-radius:8px; padding:16px 24px; flex:1; text-align:center; }
+  .card h2 { margin:0; font-size:28px; }
+  .Low h2 { color:#3fb950; }
+  .Medium h2 { color:#d29922; }
+  .High h2 { color:#f85149; }
+  .Critical h2 { color:#ff6b81; }
+  table { width:100%; border-collapse:collapse; background:#161b22; border:1px solid #30363d; }
+  th,td { padding:10px; text-align:left; border-bottom:1px solid #30363d; }
+  th { color:#58a6ff; }
+  tr:hover { background:#1c2128; }
+  input[type=text],input[type=file] { padding:8px; margin-bottom:12px; width:280px; background:#0d1117; color:#c9d1d9; border:1px solid #30363d; border-radius:4px; }
+  button.action { background:#1f6feb; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; }
+  .status-tag { padding:2px 8px; border-radius:4px; font-size:12px; }
+  .investigating { background:#3d2e0a; color:#d29922; }
+  .resolved { background:#0f2d1f; color:#3fb950; }
+  .open { background:#1c2128; color:#8b949e; }
+  pre { white-space:pre-wrap; word-break:break-word; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Insider Threat Behavioral Intelligence System</h1>
+</header>
+
+<nav>
+  <button class="tabBtn active" data-tab="predictTab">Predict</button>
+  <button class="tabBtn" data-tab="riskTab">Risk Scores</button>
+  <button class="tabBtn" data-tab="incidentsTab">Incidents</button>
+</nav>
+
+<main>
+
+  <div id="predictTab" class="tab active">
+    <h2>Live CSV Prediction</h2>
+    <input type="file" id="csvFile" accept=".csv">
+    <br>
+    <button class="action" onclick="uploadCSV()">Run Prediction</button>
+    <div id="predictResults" style="margin-top:20px;"></div>
+  </div>
+
+  <div id="riskTab" class="tab">
+    <h2>Insider Risk Scores</h2>
+    <div class="summary" id="summary"></div>
+    <input type="text" id="searchBox" placeholder="Filter by user...">
+    <table>
+      <thead><tr><th>User</th><th>Risk Score</th><th>Risk Level</th></tr></thead>
+      <tbody id="riskTableBody"></tbody>
+    </table>
+  </div>
+
+  <div id="incidentsTab" class="tab">
+    <h2>Threat Incidents</h2>
+    <table>
+      <thead><tr><th>Incident ID</th><th>User</th><th>Status</th><th>Anomalous Days</th><th>Notes</th><th>Created</th></tr></thead>
+      <tbody id="incidentsTableBody"></tbody>
+    </table>
+  </div>
+
+</main>
+
+<script>
+const API_BASE = "http://127.0.0.1:8000";
+
+document.querySelectorAll(".tabBtn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tabBtn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById(btn.dataset.tab).classList.add("active");
+  });
+});
+
+async function loadSummary() {
+  const res = await fetch(`${API_BASE}/risk-scores/summary`);
+  const data = await res.json();
+  const summaryDiv = document.getElementById("summary");
+  summaryDiv.innerHTML = "";
+  for (const [level, count] of Object.entries(data)) {
+    summaryDiv.innerHTML += `<div class="card ${level}"><h2>${count}</h2><p>${level}</p></div>`;
+  }
+}
+
+async function loadRiskScores() {
+  const res = await fetch(`${API_BASE}/risk-scores`);
+  const data = await res.json();
+  renderRiskTable(data);
+  document.getElementById("searchBox").addEventListener("input", (e) => {
+    const filtered = data.filter(row => row.user.toLowerCase().includes(e.target.value.toLowerCase()));
+    renderRiskTable(filtered);
+  });
+}
+
+function renderRiskTable(rows) {
+  const tbody = document.getElementById("riskTableBody");
+  tbody.innerHTML = "";
+  rows.forEach(row => {
+    tbody.innerHTML += `<tr>
+      <td>${row.user}</td>
+      <td>${row.insider_risk_score ?? "-"}</td>
+      <td>${row.risk_category ?? "-"}</td>
+    </tr>`;
+  });
+}
+
+async function loadIncidents() {
+  const res = await fetch(`${API_BASE}/incidents`);
+  const data = await res.json();
+  const tbody = document.getElementById("incidentsTableBody");
+  tbody.innerHTML = "";
+  data.forEach(row => {
+    tbody.innerHTML += `<tr>
+      <td>${row.incident_id}</td>
+      <td>${row.user}</td>
+      <td><span class="status-tag ${row.status}">${row.status}</span></td>
+      <td>${row.anomalous_day_count}</td>
+      <td>${row.notes ?? ""}</td>
+      <td>${new Date(row.created_at).toLocaleString()}</td>
+    </tr>`;
+  });
+}
+
+async function uploadCSV() {
+  const fileInput = document.getElementById("csvFile");
+  if (!fileInput.files.length) { alert("Choose a CSV file first."); return; }
+  const formData = new FormData();
+  formData.append("file", fileInput.files[0]);
+  const res = await fetch(`${API_BASE}/predict`, { method: "POST", body: formData });
+  const data = await res.json();
+  const resultsDiv = document.getElementById("predictResults");
+  resultsDiv.innerHTML = `<pre style="background:#161b22;padding:16px;border-radius:8px;overflow:auto;">${JSON.stringify(data, null, 2)}</pre>`;
+}
+
+loadSummary();
+loadRiskScores();
+loadIncidents();
+</script>
+
+</body>
+</html>

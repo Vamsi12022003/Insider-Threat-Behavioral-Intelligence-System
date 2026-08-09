@@ -1004,5 +1004,3023 @@
         "primary_reason": "logon_count (z=0.62)"
       }
     ]
+  },
+  {
+    "incident_id": "f2906017",
+    "user": "MPM0220",
+    "status": "investigating",
+    "created_at": "2026-08-07T08:35:23.453868+00:00",
+    "updated_at": "2026-08-07T08:35:23.510724+00:00",
+    "notes": "pytest test incident",
+    "anomalous_day_count": 199,
+    "evidence": [
+      {
+        "day": "2010-01-04",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-01-05",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-01-06",
+        "anomaly_score": -0.0778373453353216,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-01-07",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-01-08",
+        "anomaly_score": -0.0566009403448725,
+        "primary_reason": "device_connects (z=-0.78)"
+      },
+      {
+        "day": "2010-01-11",
+        "anomaly_score": -0.0869420811265216,
+        "primary_reason": "after_hours_ratio (z=1.68)"
+      },
+      {
+        "day": "2010-01-12",
+        "anomaly_score": -0.0835181856345222,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-01-13",
+        "anomaly_score": -0.0490293444492596,
+        "primary_reason": "device_connects (z=-1.32)"
+      },
+      {
+        "day": "2010-01-14",
+        "anomaly_score": -0.075952682571623,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-01-15",
+        "anomaly_score": -0.0697915485313434,
+        "primary_reason": "device_connects (z=-0.78)"
+      },
+      {
+        "day": "2010-01-18",
+        "anomaly_score": -0.0956506000405098,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-01-21",
+        "anomaly_score": -0.0647379495254819,
+        "primary_reason": "after_hours_ratio (z=-0.32)"
+      },
+      {
+        "day": "2010-01-22",
+        "anomaly_score": -0.0575576838466198,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-01-27",
+        "anomaly_score": -0.0575576838466198,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-01-28",
+        "anomaly_score": -0.0703253983281926,
+        "primary_reason": "unique_pcs (z=-0.72)"
+      },
+      {
+        "day": "2010-01-29",
+        "anomaly_score": -0.0445716633731102,
+        "primary_reason": "device_connects (z=-0.78)"
+      },
+      {
+        "day": "2010-02-01",
+        "anomaly_score": -0.0908816755905268,
+        "primary_reason": "logon_count (z=1.23)"
+      },
+      {
+        "day": "2010-02-02",
+        "anomaly_score": -0.0896102891773787,
+        "primary_reason": "logoff_count (z=1.15)"
+      },
+      {
+        "day": "2010-02-03",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-02-04",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-02-05",
+        "anomaly_score": -0.0635683532842823,
+        "primary_reason": "after_hours_ratio (z=1.43)"
+      },
+      {
+        "day": "2010-02-08",
+        "anomaly_score": -0.011602842466754,
+        "primary_reason": "logon_count (z=-1.80)"
+      },
+      {
+        "day": "2010-02-10",
+        "anomaly_score": -0.0956506000405098,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-02-11",
+        "anomaly_score": -0.087111727169725,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-02-12",
+        "anomaly_score": -0.0973057745744602,
+        "primary_reason": "logoff_count (z=1.80)"
+      },
+      {
+        "day": "2010-02-15",
+        "anomaly_score": -0.0718181455303867,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-02-16",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-02-18",
+        "anomaly_score": -0.0756838091739736,
+        "primary_reason": "logon_count (z=0.62)"
+      },
+      {
+        "day": "2010-02-19",
+        "anomaly_score": -0.0813492959433037,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-02-22",
+        "anomaly_score": -0.0440704744815276,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-02-23",
+        "anomaly_score": -0.0418480458523204,
+        "primary_reason": "device_connects (z=-1.32)"
+      },
+      {
+        "day": "2010-02-24",
+        "anomaly_score": -0.0304437729856196,
+        "primary_reason": "unique_pcs (z=-1.41)"
+      },
+      {
+        "day": "2010-02-25",
+        "anomaly_score": -0.1016372721584135,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-03-01",
+        "anomaly_score": -0.0570869157882044,
+        "primary_reason": "after_hours_ratio (z=0.81)"
+      },
+      {
+        "day": "2010-03-02",
+        "anomaly_score": -0.068192164603929,
+        "primary_reason": "logoff_count (z=0.51)"
+      },
+      {
+        "day": "2010-03-03",
+        "anomaly_score": -0.0846048336284666,
+        "primary_reason": "after_hours_ratio (z=-0.65)"
+      },
+      {
+        "day": "2010-03-04",
+        "anomaly_score": -0.0861245864732636,
+        "primary_reason": "after_hours_ratio (z=1.68)"
+      },
+      {
+        "day": "2010-03-05",
+        "anomaly_score": -0.0978009398275235,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-03-08",
+        "anomaly_score": -0.0642078788414366,
+        "primary_reason": "after_hours_ratio (z=-0.82)"
+      },
+      {
+        "day": "2010-03-09",
+        "anomaly_score": -0.0920189921764713,
+        "primary_reason": "logoff_count (z=1.15)"
+      },
+      {
+        "day": "2010-03-10",
+        "anomaly_score": -0.0983537468075795,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-03-11",
+        "anomaly_score": -0.0942738519802455,
+        "primary_reason": "logoff_count (z=1.80)"
+      },
+      {
+        "day": "2010-03-12",
+        "anomaly_score": -0.078590466419642,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-03-15",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-03-16",
+        "anomaly_score": -0.0956506000405098,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-03-17",
+        "anomaly_score": -0.0319287747784992,
+        "primary_reason": "device_connects (z=-1.32)"
+      },
+      {
+        "day": "2010-03-18",
+        "anomaly_score": -0.0931741289836702,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-03-19",
+        "anomaly_score": -0.0896102891773787,
+        "primary_reason": "logoff_count (z=1.15)"
+      },
+      {
+        "day": "2010-03-22",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-03-23",
+        "anomaly_score": -0.0631488127826798,
+        "primary_reason": "after_hours_ratio (z=-1.32)"
+      },
+      {
+        "day": "2010-03-24",
+        "anomaly_score": -0.0876977804526154,
+        "primary_reason": "after_hours_ratio (z=-1.48)"
+      },
+      {
+        "day": "2010-03-25",
+        "anomaly_score": -0.0215277252562757,
+        "primary_reason": "unique_pcs (z=-1.41)"
+      },
+      {
+        "day": "2010-03-26",
+        "anomaly_score": -0.0835181856345222,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-03-29",
+        "anomaly_score": -0.0849331252626377,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-03-30",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-03-31",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-04-01",
+        "anomaly_score": -0.0922526810451408,
+        "primary_reason": "after_hours_ratio (z=1.01)"
+      },
+      {
+        "day": "2010-04-05",
+        "anomaly_score": -0.0969724303317881,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-04-06",
+        "anomaly_score": -0.068192164603929,
+        "primary_reason": "after_hours_ratio (z=0.81)"
+      },
+      {
+        "day": "2010-04-07",
+        "anomaly_score": -0.08509229435341,
+        "primary_reason": "after_hours_ratio (z=1.01)"
+      },
+      {
+        "day": "2010-04-08",
+        "anomaly_score": -0.0631488127826798,
+        "primary_reason": "after_hours_ratio (z=-1.32)"
+      },
+      {
+        "day": "2010-04-09",
+        "anomaly_score": -0.0647379495254819,
+        "primary_reason": "after_hours_ratio (z=-0.32)"
+      },
+      {
+        "day": "2010-04-12",
+        "anomaly_score": -0.0988085072230223,
+        "primary_reason": "after_hours_ratio (z=1.85)"
+      },
+      {
+        "day": "2010-04-13",
+        "anomaly_score": -0.0872713276104394,
+        "primary_reason": "after_hours_ratio (z=1.01)"
+      },
+      {
+        "day": "2010-04-14",
+        "anomaly_score": -0.0406155166650753,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-04-15",
+        "anomaly_score": -0.0832467533118113,
+        "primary_reason": "after_hours_ratio (z=-1.48)"
+      },
+      {
+        "day": "2010-04-16",
+        "anomaly_score": -0.0888527981953769,
+        "primary_reason": "after_hours_ratio (z=1.68)"
+      },
+      {
+        "day": "2010-04-19",
+        "anomaly_score": -0.011602842466754,
+        "primary_reason": "logon_count (z=-1.80)"
+      },
+      {
+        "day": "2010-04-20",
+        "anomaly_score": -0.0406155166650753,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-04-21",
+        "anomaly_score": -0.0440704744815276,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-04-22",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-04-23",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-04-26",
+        "anomaly_score": -0.0388720611499664,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-04-27",
+        "anomaly_score": -0.0846048336284666,
+        "primary_reason": "after_hours_ratio (z=-0.65)"
+      },
+      {
+        "day": "2010-04-28",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-04-29",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-04-30",
+        "anomaly_score": -0.0406155166650753,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-05-03",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-05-04",
+        "anomaly_score": -0.087111727169725,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-05-05",
+        "anomaly_score": -0.0846048336284666,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-05-06",
+        "anomaly_score": -0.0354101109229795,
+        "primary_reason": "after_hours_ratio (z=-2.32)"
+      },
+      {
+        "day": "2010-05-07",
+        "anomaly_score": -0.0177283383949072,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-05-10",
+        "anomaly_score": -0.0813492959433037,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-05-12",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-05-13",
+        "anomaly_score": -0.0647379495254819,
+        "primary_reason": "after_hours_ratio (z=-0.32)"
+      },
+      {
+        "day": "2010-05-14",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-05-17",
+        "anomaly_score": -0.1016372721584135,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-05-18",
+        "anomaly_score": -0.0644728693536382,
+        "primary_reason": "device_connects (z=0.30)"
+      },
+      {
+        "day": "2010-05-19",
+        "anomaly_score": -0.0445716633731102,
+        "primary_reason": "device_connects (z=-0.78)"
+      },
+      {
+        "day": "2010-05-20",
+        "anomaly_score": -0.0305242059918799,
+        "primary_reason": "after_hours_ratio (z=-2.32)"
+      },
+      {
+        "day": "2010-05-21",
+        "anomaly_score": -0.0813492959433037,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-05-24",
+        "anomaly_score": -0.0865100094150362,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-05-26",
+        "anomaly_score": -0.0956506000405098,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-05-27",
+        "anomaly_score": -0.011602842466754,
+        "primary_reason": "logon_count (z=-1.80)"
+      },
+      {
+        "day": "2010-05-28",
+        "anomaly_score": -0.0835181856345222,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-06-01",
+        "anomaly_score": -0.0034415701448784,
+        "primary_reason": "logon_count (z=-1.80)"
+      },
+      {
+        "day": "2010-06-02",
+        "anomaly_score": -0.0647379495254819,
+        "primary_reason": "after_hours_ratio (z=-0.32)"
+      },
+      {
+        "day": "2010-06-03",
+        "anomaly_score": -0.0545047995266767,
+        "primary_reason": "device_connects (z=-0.78)"
+      },
+      {
+        "day": "2010-06-04",
+        "anomaly_score": -0.0956506000405098,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-06-07",
+        "anomaly_score": -0.0388720611499664,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-06-08",
+        "anomaly_score": -0.0347811464257415,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-06-09",
+        "anomaly_score": -0.1016372721584135,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-06-10",
+        "anomaly_score": -0.086606949998116,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-06-14",
+        "anomaly_score": -0.0972485067426048,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-06-15",
+        "anomaly_score": -0.0978009398275235,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-06-17",
+        "anomaly_score": -0.0406155166650753,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-06-18",
+        "anomaly_score": -0.0813492959433037,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-06-21",
+        "anomaly_score": -0.0560374791051783,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-06-22",
+        "anomaly_score": -0.090979142305592,
+        "primary_reason": "logon_count (z=1.23)"
+      },
+      {
+        "day": "2010-06-23",
+        "anomaly_score": -0.0567699956874182,
+        "primary_reason": "logon_count (z=-0.59)"
+      },
+      {
+        "day": "2010-06-24",
+        "anomaly_score": -0.0644728693536382,
+        "primary_reason": "device_connects (z=0.30)"
+      },
+      {
+        "day": "2010-06-25",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-06-28",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-06-29",
+        "anomaly_score": -0.0440704744815276,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-06-30",
+        "anomaly_score": -0.0440704744815276,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-07-01",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-07-02",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-07-06",
+        "anomaly_score": -0.0034415701448784,
+        "primary_reason": "logon_count (z=-1.80)"
+      },
+      {
+        "day": "2010-07-07",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-07-08",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-07-09",
+        "anomaly_score": -0.0952770683966118,
+        "primary_reason": "after_hours_ratio (z=1.43)"
+      },
+      {
+        "day": "2010-07-12",
+        "anomaly_score": -0.0406155166650753,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-07-13",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-07-14",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-07-15",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-07-16",
+        "anomaly_score": -0.0937238044675825,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-07-19",
+        "anomaly_score": -0.0835181856345222,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-07-20",
+        "anomaly_score": -0.0288866430409322,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-07-22",
+        "anomaly_score": -0.0575576838466198,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-07-23",
+        "anomaly_score": -0.0939987817045869,
+        "primary_reason": "logon_count (z=1.23)"
+      },
+      {
+        "day": "2010-07-27",
+        "anomaly_score": -0.090060184751883,
+        "primary_reason": "after_hours_ratio (z=1.01)"
+      },
+      {
+        "day": "2010-07-28",
+        "anomaly_score": -0.0964777673568565,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-07-30",
+        "anomaly_score": -0.1000144136500059,
+        "primary_reason": "logoff_count (z=1.80)"
+      },
+      {
+        "day": "2010-08-02",
+        "anomaly_score": -0.011602842466754,
+        "primary_reason": "logon_count (z=-1.80)"
+      },
+      {
+        "day": "2010-08-03",
+        "anomaly_score": -0.084004987187042,
+        "primary_reason": "after_hours_ratio (z=1.01)"
+      },
+      {
+        "day": "2010-08-04",
+        "anomaly_score": -0.0931333732416479,
+        "primary_reason": "logon_count (z=1.23)"
+      },
+      {
+        "day": "2010-08-05",
+        "anomaly_score": -0.1058119722460391,
+        "primary_reason": "logoff_count (z=1.80)"
+      },
+      {
+        "day": "2010-08-06",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-08-09",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-08-10",
+        "anomaly_score": -0.0983537468075795,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-08-11",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-08-12",
+        "anomaly_score": -0.078590466419642,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-08-13",
+        "anomaly_score": -0.0978009398275235,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-08-16",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-08-17",
+        "anomaly_score": -0.0631488127826798,
+        "primary_reason": "after_hours_ratio (z=-1.32)"
+      },
+      {
+        "day": "2010-08-18",
+        "anomaly_score": -0.0501289956489128,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-08-19",
+        "anomaly_score": -0.011602842466754,
+        "primary_reason": "logon_count (z=-1.80)"
+      },
+      {
+        "day": "2010-08-20",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-08-23",
+        "anomaly_score": -0.0567699956874182,
+        "primary_reason": "logon_count (z=-0.59)"
+      },
+      {
+        "day": "2010-08-24",
+        "anomaly_score": -0.0978009398275235,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-08-25",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-08-26",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-08-27",
+        "anomaly_score": -0.0865100094150362,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-08-31",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-09-01",
+        "anomaly_score": -0.0647379495254819,
+        "primary_reason": "after_hours_ratio (z=-0.32)"
+      },
+      {
+        "day": "2010-09-02",
+        "anomaly_score": -0.1018573357243126,
+        "primary_reason": "after_hours_ratio (z=1.85)"
+      },
+      {
+        "day": "2010-09-03",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-09-07",
+        "anomaly_score": -0.1016372721584135,
+        "primary_reason": "after_hours_ratio (z=1.61)"
+      },
+      {
+        "day": "2010-09-08",
+        "anomaly_score": -0.0612988920776411,
+        "primary_reason": "device_connects (z=-0.78)"
+      },
+      {
+        "day": "2010-09-09",
+        "anomaly_score": -0.0813492959433037,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-09-10",
+        "anomaly_score": -0.0892395272045117,
+        "primary_reason": "after_hours_ratio (z=1.01)"
+      },
+      {
+        "day": "2010-09-13",
+        "anomaly_score": -0.0956506000405098,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-09-14",
+        "anomaly_score": -0.0388720611499664,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-09-15",
+        "anomaly_score": -0.105475154334504,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-09-16",
+        "anomaly_score": -0.0112765904609365,
+        "primary_reason": "after_hours_ratio (z=-1.48)"
+      },
+      {
+        "day": "2010-09-17",
+        "anomaly_score": -0.0892395272045117,
+        "primary_reason": "after_hours_ratio (z=1.01)"
+      },
+      {
+        "day": "2010-09-20",
+        "anomaly_score": -0.0813492959433037,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-09-21",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-09-23",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-09-24",
+        "anomaly_score": -0.0964777673568565,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-09-27",
+        "anomaly_score": -0.0440704744815276,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-09-28",
+        "anomaly_score": -0.0931741289836702,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-09-29",
+        "anomaly_score": -0.0680817178590711,
+        "primary_reason": "after_hours_ratio (z=1.85)"
+      },
+      {
+        "day": "2010-09-30",
+        "anomaly_score": -0.0440704744815276,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-10-04",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-10-05",
+        "anomaly_score": -0.0956506000405098,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-10-06",
+        "anomaly_score": -0.0911963476840794,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-10-07",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-10-08",
+        "anomaly_score": -0.0631488127826798,
+        "primary_reason": "after_hours_ratio (z=-1.32)"
+      },
+      {
+        "day": "2010-10-11",
+        "anomaly_score": -0.1016372721584135,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-10-12",
+        "anomaly_score": -0.0937238044675825,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-10-13",
+        "anomaly_score": -0.025470307534959,
+        "primary_reason": "after_hours_ratio (z=-2.32)"
+      },
+      {
+        "day": "2010-10-14",
+        "anomaly_score": -0.0264132441998672,
+        "primary_reason": "device_connects (z=-1.32)"
+      },
+      {
+        "day": "2010-10-15",
+        "anomaly_score": -0.0813492959433037,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-10-18",
+        "anomaly_score": -0.0567699956874182,
+        "primary_reason": "logon_count (z=-0.59)"
+      },
+      {
+        "day": "2010-10-19",
+        "anomaly_score": -0.0972485067426048,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-10-20",
+        "anomaly_score": -0.0631488127826798,
+        "primary_reason": "after_hours_ratio (z=-1.32)"
+      },
+      {
+        "day": "2010-10-21",
+        "anomaly_score": -0.0575576838466198,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-10-22",
+        "anomaly_score": -0.0835181856345222,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-10-25",
+        "anomaly_score": -0.0964777673568565,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-10-26",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-10-27",
+        "anomaly_score": -0.0888527981953769,
+        "primary_reason": "after_hours_ratio (z=1.68)"
+      },
+      {
+        "day": "2010-10-28",
+        "anomaly_score": -0.1001929319881003,
+        "primary_reason": "after_hours_ratio (z=1.85)"
+      },
+      {
+        "day": "2010-10-29",
+        "anomaly_score": -0.0289391144761337,
+        "primary_reason": "device_connects (z=-1.32)"
+      },
+      {
+        "day": "2010-11-01",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-11-02",
+        "anomaly_score": -0.1016372721584135,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-11-03",
+        "anomaly_score": -0.0991426015692054,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-11-04",
+        "anomaly_score": -0.0796704418452655,
+        "primary_reason": "unique_pcs (z=-0.72)"
+      },
+      {
+        "day": "2010-11-05",
+        "anomaly_score": -0.0756838091739736,
+        "primary_reason": "logon_count (z=0.62)"
+      }
+    ]
+  },
+  {
+    "incident_id": "5cd58579",
+    "user": "MPM0220",
+    "status": "investigating",
+    "created_at": "2026-08-07T08:36:36.424895+00:00",
+    "updated_at": "2026-08-07T08:36:36.470056+00:00",
+    "notes": "pytest test incident",
+    "anomalous_day_count": 199,
+    "evidence": [
+      {
+        "day": "2010-01-04",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-01-05",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-01-06",
+        "anomaly_score": -0.0778373453353216,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-01-07",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-01-08",
+        "anomaly_score": -0.0566009403448725,
+        "primary_reason": "device_connects (z=-0.78)"
+      },
+      {
+        "day": "2010-01-11",
+        "anomaly_score": -0.0869420811265216,
+        "primary_reason": "after_hours_ratio (z=1.68)"
+      },
+      {
+        "day": "2010-01-12",
+        "anomaly_score": -0.0835181856345222,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-01-13",
+        "anomaly_score": -0.0490293444492596,
+        "primary_reason": "device_connects (z=-1.32)"
+      },
+      {
+        "day": "2010-01-14",
+        "anomaly_score": -0.075952682571623,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-01-15",
+        "anomaly_score": -0.0697915485313434,
+        "primary_reason": "device_connects (z=-0.78)"
+      },
+      {
+        "day": "2010-01-18",
+        "anomaly_score": -0.0956506000405098,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-01-21",
+        "anomaly_score": -0.0647379495254819,
+        "primary_reason": "after_hours_ratio (z=-0.32)"
+      },
+      {
+        "day": "2010-01-22",
+        "anomaly_score": -0.0575576838466198,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-01-27",
+        "anomaly_score": -0.0575576838466198,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-01-28",
+        "anomaly_score": -0.0703253983281926,
+        "primary_reason": "unique_pcs (z=-0.72)"
+      },
+      {
+        "day": "2010-01-29",
+        "anomaly_score": -0.0445716633731102,
+        "primary_reason": "device_connects (z=-0.78)"
+      },
+      {
+        "day": "2010-02-01",
+        "anomaly_score": -0.0908816755905268,
+        "primary_reason": "logon_count (z=1.23)"
+      },
+      {
+        "day": "2010-02-02",
+        "anomaly_score": -0.0896102891773787,
+        "primary_reason": "logoff_count (z=1.15)"
+      },
+      {
+        "day": "2010-02-03",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-02-04",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-02-05",
+        "anomaly_score": -0.0635683532842823,
+        "primary_reason": "after_hours_ratio (z=1.43)"
+      },
+      {
+        "day": "2010-02-08",
+        "anomaly_score": -0.011602842466754,
+        "primary_reason": "logon_count (z=-1.80)"
+      },
+      {
+        "day": "2010-02-10",
+        "anomaly_score": -0.0956506000405098,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-02-11",
+        "anomaly_score": -0.087111727169725,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-02-12",
+        "anomaly_score": -0.0973057745744602,
+        "primary_reason": "logoff_count (z=1.80)"
+      },
+      {
+        "day": "2010-02-15",
+        "anomaly_score": -0.0718181455303867,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-02-16",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-02-18",
+        "anomaly_score": -0.0756838091739736,
+        "primary_reason": "logon_count (z=0.62)"
+      },
+      {
+        "day": "2010-02-19",
+        "anomaly_score": -0.0813492959433037,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-02-22",
+        "anomaly_score": -0.0440704744815276,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-02-23",
+        "anomaly_score": -0.0418480458523204,
+        "primary_reason": "device_connects (z=-1.32)"
+      },
+      {
+        "day": "2010-02-24",
+        "anomaly_score": -0.0304437729856196,
+        "primary_reason": "unique_pcs (z=-1.41)"
+      },
+      {
+        "day": "2010-02-25",
+        "anomaly_score": -0.1016372721584135,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-03-01",
+        "anomaly_score": -0.0570869157882044,
+        "primary_reason": "after_hours_ratio (z=0.81)"
+      },
+      {
+        "day": "2010-03-02",
+        "anomaly_score": -0.068192164603929,
+        "primary_reason": "logoff_count (z=0.51)"
+      },
+      {
+        "day": "2010-03-03",
+        "anomaly_score": -0.0846048336284666,
+        "primary_reason": "after_hours_ratio (z=-0.65)"
+      },
+      {
+        "day": "2010-03-04",
+        "anomaly_score": -0.0861245864732636,
+        "primary_reason": "after_hours_ratio (z=1.68)"
+      },
+      {
+        "day": "2010-03-05",
+        "anomaly_score": -0.0978009398275235,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-03-08",
+        "anomaly_score": -0.0642078788414366,
+        "primary_reason": "after_hours_ratio (z=-0.82)"
+      },
+      {
+        "day": "2010-03-09",
+        "anomaly_score": -0.0920189921764713,
+        "primary_reason": "logoff_count (z=1.15)"
+      },
+      {
+        "day": "2010-03-10",
+        "anomaly_score": -0.0983537468075795,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-03-11",
+        "anomaly_score": -0.0942738519802455,
+        "primary_reason": "logoff_count (z=1.80)"
+      },
+      {
+        "day": "2010-03-12",
+        "anomaly_score": -0.078590466419642,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-03-15",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-03-16",
+        "anomaly_score": -0.0956506000405098,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-03-17",
+        "anomaly_score": -0.0319287747784992,
+        "primary_reason": "device_connects (z=-1.32)"
+      },
+      {
+        "day": "2010-03-18",
+        "anomaly_score": -0.0931741289836702,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-03-19",
+        "anomaly_score": -0.0896102891773787,
+        "primary_reason": "logoff_count (z=1.15)"
+      },
+      {
+        "day": "2010-03-22",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-03-23",
+        "anomaly_score": -0.0631488127826798,
+        "primary_reason": "after_hours_ratio (z=-1.32)"
+      },
+      {
+        "day": "2010-03-24",
+        "anomaly_score": -0.0876977804526154,
+        "primary_reason": "after_hours_ratio (z=-1.48)"
+      },
+      {
+        "day": "2010-03-25",
+        "anomaly_score": -0.0215277252562757,
+        "primary_reason": "unique_pcs (z=-1.41)"
+      },
+      {
+        "day": "2010-03-26",
+        "anomaly_score": -0.0835181856345222,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-03-29",
+        "anomaly_score": -0.0849331252626377,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-03-30",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-03-31",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-04-01",
+        "anomaly_score": -0.0922526810451408,
+        "primary_reason": "after_hours_ratio (z=1.01)"
+      },
+      {
+        "day": "2010-04-05",
+        "anomaly_score": -0.0969724303317881,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-04-06",
+        "anomaly_score": -0.068192164603929,
+        "primary_reason": "after_hours_ratio (z=0.81)"
+      },
+      {
+        "day": "2010-04-07",
+        "anomaly_score": -0.08509229435341,
+        "primary_reason": "after_hours_ratio (z=1.01)"
+      },
+      {
+        "day": "2010-04-08",
+        "anomaly_score": -0.0631488127826798,
+        "primary_reason": "after_hours_ratio (z=-1.32)"
+      },
+      {
+        "day": "2010-04-09",
+        "anomaly_score": -0.0647379495254819,
+        "primary_reason": "after_hours_ratio (z=-0.32)"
+      },
+      {
+        "day": "2010-04-12",
+        "anomaly_score": -0.0988085072230223,
+        "primary_reason": "after_hours_ratio (z=1.85)"
+      },
+      {
+        "day": "2010-04-13",
+        "anomaly_score": -0.0872713276104394,
+        "primary_reason": "after_hours_ratio (z=1.01)"
+      },
+      {
+        "day": "2010-04-14",
+        "anomaly_score": -0.0406155166650753,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-04-15",
+        "anomaly_score": -0.0832467533118113,
+        "primary_reason": "after_hours_ratio (z=-1.48)"
+      },
+      {
+        "day": "2010-04-16",
+        "anomaly_score": -0.0888527981953769,
+        "primary_reason": "after_hours_ratio (z=1.68)"
+      },
+      {
+        "day": "2010-04-19",
+        "anomaly_score": -0.011602842466754,
+        "primary_reason": "logon_count (z=-1.80)"
+      },
+      {
+        "day": "2010-04-20",
+        "anomaly_score": -0.0406155166650753,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-04-21",
+        "anomaly_score": -0.0440704744815276,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-04-22",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-04-23",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-04-26",
+        "anomaly_score": -0.0388720611499664,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-04-27",
+        "anomaly_score": -0.0846048336284666,
+        "primary_reason": "after_hours_ratio (z=-0.65)"
+      },
+      {
+        "day": "2010-04-28",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-04-29",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-04-30",
+        "anomaly_score": -0.0406155166650753,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-05-03",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-05-04",
+        "anomaly_score": -0.087111727169725,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-05-05",
+        "anomaly_score": -0.0846048336284666,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-05-06",
+        "anomaly_score": -0.0354101109229795,
+        "primary_reason": "after_hours_ratio (z=-2.32)"
+      },
+      {
+        "day": "2010-05-07",
+        "anomaly_score": -0.0177283383949072,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-05-10",
+        "anomaly_score": -0.0813492959433037,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-05-12",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-05-13",
+        "anomaly_score": -0.0647379495254819,
+        "primary_reason": "after_hours_ratio (z=-0.32)"
+      },
+      {
+        "day": "2010-05-14",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-05-17",
+        "anomaly_score": -0.1016372721584135,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-05-18",
+        "anomaly_score": -0.0644728693536382,
+        "primary_reason": "device_connects (z=0.30)"
+      },
+      {
+        "day": "2010-05-19",
+        "anomaly_score": -0.0445716633731102,
+        "primary_reason": "device_connects (z=-0.78)"
+      },
+      {
+        "day": "2010-05-20",
+        "anomaly_score": -0.0305242059918799,
+        "primary_reason": "after_hours_ratio (z=-2.32)"
+      },
+      {
+        "day": "2010-05-21",
+        "anomaly_score": -0.0813492959433037,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-05-24",
+        "anomaly_score": -0.0865100094150362,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-05-26",
+        "anomaly_score": -0.0956506000405098,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-05-27",
+        "anomaly_score": -0.011602842466754,
+        "primary_reason": "logon_count (z=-1.80)"
+      },
+      {
+        "day": "2010-05-28",
+        "anomaly_score": -0.0835181856345222,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-06-01",
+        "anomaly_score": -0.0034415701448784,
+        "primary_reason": "logon_count (z=-1.80)"
+      },
+      {
+        "day": "2010-06-02",
+        "anomaly_score": -0.0647379495254819,
+        "primary_reason": "after_hours_ratio (z=-0.32)"
+      },
+      {
+        "day": "2010-06-03",
+        "anomaly_score": -0.0545047995266767,
+        "primary_reason": "device_connects (z=-0.78)"
+      },
+      {
+        "day": "2010-06-04",
+        "anomaly_score": -0.0956506000405098,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-06-07",
+        "anomaly_score": -0.0388720611499664,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-06-08",
+        "anomaly_score": -0.0347811464257415,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-06-09",
+        "anomaly_score": -0.1016372721584135,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-06-10",
+        "anomaly_score": -0.086606949998116,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-06-14",
+        "anomaly_score": -0.0972485067426048,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-06-15",
+        "anomaly_score": -0.0978009398275235,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-06-17",
+        "anomaly_score": -0.0406155166650753,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-06-18",
+        "anomaly_score": -0.0813492959433037,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-06-21",
+        "anomaly_score": -0.0560374791051783,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-06-22",
+        "anomaly_score": -0.090979142305592,
+        "primary_reason": "logon_count (z=1.23)"
+      },
+      {
+        "day": "2010-06-23",
+        "anomaly_score": -0.0567699956874182,
+        "primary_reason": "logon_count (z=-0.59)"
+      },
+      {
+        "day": "2010-06-24",
+        "anomaly_score": -0.0644728693536382,
+        "primary_reason": "device_connects (z=0.30)"
+      },
+      {
+        "day": "2010-06-25",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-06-28",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-06-29",
+        "anomaly_score": -0.0440704744815276,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-06-30",
+        "anomaly_score": -0.0440704744815276,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-07-01",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-07-02",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-07-06",
+        "anomaly_score": -0.0034415701448784,
+        "primary_reason": "logon_count (z=-1.80)"
+      },
+      {
+        "day": "2010-07-07",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-07-08",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-07-09",
+        "anomaly_score": -0.0952770683966118,
+        "primary_reason": "after_hours_ratio (z=1.43)"
+      },
+      {
+        "day": "2010-07-12",
+        "anomaly_score": -0.0406155166650753,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-07-13",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-07-14",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-07-15",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-07-16",
+        "anomaly_score": -0.0937238044675825,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-07-19",
+        "anomaly_score": -0.0835181856345222,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-07-20",
+        "anomaly_score": -0.0288866430409322,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-07-22",
+        "anomaly_score": -0.0575576838466198,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-07-23",
+        "anomaly_score": -0.0939987817045869,
+        "primary_reason": "logon_count (z=1.23)"
+      },
+      {
+        "day": "2010-07-27",
+        "anomaly_score": -0.090060184751883,
+        "primary_reason": "after_hours_ratio (z=1.01)"
+      },
+      {
+        "day": "2010-07-28",
+        "anomaly_score": -0.0964777673568565,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-07-30",
+        "anomaly_score": -0.1000144136500059,
+        "primary_reason": "logoff_count (z=1.80)"
+      },
+      {
+        "day": "2010-08-02",
+        "anomaly_score": -0.011602842466754,
+        "primary_reason": "logon_count (z=-1.80)"
+      },
+      {
+        "day": "2010-08-03",
+        "anomaly_score": -0.084004987187042,
+        "primary_reason": "after_hours_ratio (z=1.01)"
+      },
+      {
+        "day": "2010-08-04",
+        "anomaly_score": -0.0931333732416479,
+        "primary_reason": "logon_count (z=1.23)"
+      },
+      {
+        "day": "2010-08-05",
+        "anomaly_score": -0.1058119722460391,
+        "primary_reason": "logoff_count (z=1.80)"
+      },
+      {
+        "day": "2010-08-06",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-08-09",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-08-10",
+        "anomaly_score": -0.0983537468075795,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-08-11",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-08-12",
+        "anomaly_score": -0.078590466419642,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-08-13",
+        "anomaly_score": -0.0978009398275235,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-08-16",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-08-17",
+        "anomaly_score": -0.0631488127826798,
+        "primary_reason": "after_hours_ratio (z=-1.32)"
+      },
+      {
+        "day": "2010-08-18",
+        "anomaly_score": -0.0501289956489128,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-08-19",
+        "anomaly_score": -0.011602842466754,
+        "primary_reason": "logon_count (z=-1.80)"
+      },
+      {
+        "day": "2010-08-20",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-08-23",
+        "anomaly_score": -0.0567699956874182,
+        "primary_reason": "logon_count (z=-0.59)"
+      },
+      {
+        "day": "2010-08-24",
+        "anomaly_score": -0.0978009398275235,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-08-25",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-08-26",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-08-27",
+        "anomaly_score": -0.0865100094150362,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-08-31",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-09-01",
+        "anomaly_score": -0.0647379495254819,
+        "primary_reason": "after_hours_ratio (z=-0.32)"
+      },
+      {
+        "day": "2010-09-02",
+        "anomaly_score": -0.1018573357243126,
+        "primary_reason": "after_hours_ratio (z=1.85)"
+      },
+      {
+        "day": "2010-09-03",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-09-07",
+        "anomaly_score": -0.1016372721584135,
+        "primary_reason": "after_hours_ratio (z=1.61)"
+      },
+      {
+        "day": "2010-09-08",
+        "anomaly_score": -0.0612988920776411,
+        "primary_reason": "device_connects (z=-0.78)"
+      },
+      {
+        "day": "2010-09-09",
+        "anomaly_score": -0.0813492959433037,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-09-10",
+        "anomaly_score": -0.0892395272045117,
+        "primary_reason": "after_hours_ratio (z=1.01)"
+      },
+      {
+        "day": "2010-09-13",
+        "anomaly_score": -0.0956506000405098,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-09-14",
+        "anomaly_score": -0.0388720611499664,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-09-15",
+        "anomaly_score": -0.105475154334504,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-09-16",
+        "anomaly_score": -0.0112765904609365,
+        "primary_reason": "after_hours_ratio (z=-1.48)"
+      },
+      {
+        "day": "2010-09-17",
+        "anomaly_score": -0.0892395272045117,
+        "primary_reason": "after_hours_ratio (z=1.01)"
+      },
+      {
+        "day": "2010-09-20",
+        "anomaly_score": -0.0813492959433037,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-09-21",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-09-23",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-09-24",
+        "anomaly_score": -0.0964777673568565,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-09-27",
+        "anomaly_score": -0.0440704744815276,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-09-28",
+        "anomaly_score": -0.0931741289836702,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-09-29",
+        "anomaly_score": -0.0680817178590711,
+        "primary_reason": "after_hours_ratio (z=1.85)"
+      },
+      {
+        "day": "2010-09-30",
+        "anomaly_score": -0.0440704744815276,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-10-04",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-10-05",
+        "anomaly_score": -0.0956506000405098,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-10-06",
+        "anomaly_score": -0.0911963476840794,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-10-07",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-10-08",
+        "anomaly_score": -0.0631488127826798,
+        "primary_reason": "after_hours_ratio (z=-1.32)"
+      },
+      {
+        "day": "2010-10-11",
+        "anomaly_score": -0.1016372721584135,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-10-12",
+        "anomaly_score": -0.0937238044675825,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-10-13",
+        "anomaly_score": -0.025470307534959,
+        "primary_reason": "after_hours_ratio (z=-2.32)"
+      },
+      {
+        "day": "2010-10-14",
+        "anomaly_score": -0.0264132441998672,
+        "primary_reason": "device_connects (z=-1.32)"
+      },
+      {
+        "day": "2010-10-15",
+        "anomaly_score": -0.0813492959433037,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-10-18",
+        "anomaly_score": -0.0567699956874182,
+        "primary_reason": "logon_count (z=-0.59)"
+      },
+      {
+        "day": "2010-10-19",
+        "anomaly_score": -0.0972485067426048,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-10-20",
+        "anomaly_score": -0.0631488127826798,
+        "primary_reason": "after_hours_ratio (z=-1.32)"
+      },
+      {
+        "day": "2010-10-21",
+        "anomaly_score": -0.0575576838466198,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-10-22",
+        "anomaly_score": -0.0835181856345222,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-10-25",
+        "anomaly_score": -0.0964777673568565,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-10-26",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-10-27",
+        "anomaly_score": -0.0888527981953769,
+        "primary_reason": "after_hours_ratio (z=1.68)"
+      },
+      {
+        "day": "2010-10-28",
+        "anomaly_score": -0.1001929319881003,
+        "primary_reason": "after_hours_ratio (z=1.85)"
+      },
+      {
+        "day": "2010-10-29",
+        "anomaly_score": -0.0289391144761337,
+        "primary_reason": "device_connects (z=-1.32)"
+      },
+      {
+        "day": "2010-11-01",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-11-02",
+        "anomaly_score": -0.1016372721584135,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-11-03",
+        "anomaly_score": -0.0991426015692054,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-11-04",
+        "anomaly_score": -0.0796704418452655,
+        "primary_reason": "unique_pcs (z=-0.72)"
+      },
+      {
+        "day": "2010-11-05",
+        "anomaly_score": -0.0756838091739736,
+        "primary_reason": "logon_count (z=0.62)"
+      }
+    ]
+  },
+  {
+    "incident_id": "d0baad27",
+    "user": "MPM0220",
+    "status": "investigating",
+    "created_at": "2026-08-07T08:37:27.579091+00:00",
+    "updated_at": "2026-08-07T08:37:27.635099+00:00",
+    "notes": "pytest test incident",
+    "anomalous_day_count": 199,
+    "evidence": [
+      {
+        "day": "2010-01-04",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-01-05",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-01-06",
+        "anomaly_score": -0.0778373453353216,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-01-07",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-01-08",
+        "anomaly_score": -0.0566009403448725,
+        "primary_reason": "device_connects (z=-0.78)"
+      },
+      {
+        "day": "2010-01-11",
+        "anomaly_score": -0.0869420811265216,
+        "primary_reason": "after_hours_ratio (z=1.68)"
+      },
+      {
+        "day": "2010-01-12",
+        "anomaly_score": -0.0835181856345222,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-01-13",
+        "anomaly_score": -0.0490293444492596,
+        "primary_reason": "device_connects (z=-1.32)"
+      },
+      {
+        "day": "2010-01-14",
+        "anomaly_score": -0.075952682571623,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-01-15",
+        "anomaly_score": -0.0697915485313434,
+        "primary_reason": "device_connects (z=-0.78)"
+      },
+      {
+        "day": "2010-01-18",
+        "anomaly_score": -0.0956506000405098,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-01-21",
+        "anomaly_score": -0.0647379495254819,
+        "primary_reason": "after_hours_ratio (z=-0.32)"
+      },
+      {
+        "day": "2010-01-22",
+        "anomaly_score": -0.0575576838466198,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-01-27",
+        "anomaly_score": -0.0575576838466198,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-01-28",
+        "anomaly_score": -0.0703253983281926,
+        "primary_reason": "unique_pcs (z=-0.72)"
+      },
+      {
+        "day": "2010-01-29",
+        "anomaly_score": -0.0445716633731102,
+        "primary_reason": "device_connects (z=-0.78)"
+      },
+      {
+        "day": "2010-02-01",
+        "anomaly_score": -0.0908816755905268,
+        "primary_reason": "logon_count (z=1.23)"
+      },
+      {
+        "day": "2010-02-02",
+        "anomaly_score": -0.0896102891773787,
+        "primary_reason": "logoff_count (z=1.15)"
+      },
+      {
+        "day": "2010-02-03",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-02-04",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-02-05",
+        "anomaly_score": -0.0635683532842823,
+        "primary_reason": "after_hours_ratio (z=1.43)"
+      },
+      {
+        "day": "2010-02-08",
+        "anomaly_score": -0.011602842466754,
+        "primary_reason": "logon_count (z=-1.80)"
+      },
+      {
+        "day": "2010-02-10",
+        "anomaly_score": -0.0956506000405098,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-02-11",
+        "anomaly_score": -0.087111727169725,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-02-12",
+        "anomaly_score": -0.0973057745744602,
+        "primary_reason": "logoff_count (z=1.80)"
+      },
+      {
+        "day": "2010-02-15",
+        "anomaly_score": -0.0718181455303867,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-02-16",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-02-18",
+        "anomaly_score": -0.0756838091739736,
+        "primary_reason": "logon_count (z=0.62)"
+      },
+      {
+        "day": "2010-02-19",
+        "anomaly_score": -0.0813492959433037,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-02-22",
+        "anomaly_score": -0.0440704744815276,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-02-23",
+        "anomaly_score": -0.0418480458523204,
+        "primary_reason": "device_connects (z=-1.32)"
+      },
+      {
+        "day": "2010-02-24",
+        "anomaly_score": -0.0304437729856196,
+        "primary_reason": "unique_pcs (z=-1.41)"
+      },
+      {
+        "day": "2010-02-25",
+        "anomaly_score": -0.1016372721584135,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-03-01",
+        "anomaly_score": -0.0570869157882044,
+        "primary_reason": "after_hours_ratio (z=0.81)"
+      },
+      {
+        "day": "2010-03-02",
+        "anomaly_score": -0.068192164603929,
+        "primary_reason": "logoff_count (z=0.51)"
+      },
+      {
+        "day": "2010-03-03",
+        "anomaly_score": -0.0846048336284666,
+        "primary_reason": "after_hours_ratio (z=-0.65)"
+      },
+      {
+        "day": "2010-03-04",
+        "anomaly_score": -0.0861245864732636,
+        "primary_reason": "after_hours_ratio (z=1.68)"
+      },
+      {
+        "day": "2010-03-05",
+        "anomaly_score": -0.0978009398275235,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-03-08",
+        "anomaly_score": -0.0642078788414366,
+        "primary_reason": "after_hours_ratio (z=-0.82)"
+      },
+      {
+        "day": "2010-03-09",
+        "anomaly_score": -0.0920189921764713,
+        "primary_reason": "logoff_count (z=1.15)"
+      },
+      {
+        "day": "2010-03-10",
+        "anomaly_score": -0.0983537468075795,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-03-11",
+        "anomaly_score": -0.0942738519802455,
+        "primary_reason": "logoff_count (z=1.80)"
+      },
+      {
+        "day": "2010-03-12",
+        "anomaly_score": -0.078590466419642,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-03-15",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-03-16",
+        "anomaly_score": -0.0956506000405098,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-03-17",
+        "anomaly_score": -0.0319287747784992,
+        "primary_reason": "device_connects (z=-1.32)"
+      },
+      {
+        "day": "2010-03-18",
+        "anomaly_score": -0.0931741289836702,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-03-19",
+        "anomaly_score": -0.0896102891773787,
+        "primary_reason": "logoff_count (z=1.15)"
+      },
+      {
+        "day": "2010-03-22",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-03-23",
+        "anomaly_score": -0.0631488127826798,
+        "primary_reason": "after_hours_ratio (z=-1.32)"
+      },
+      {
+        "day": "2010-03-24",
+        "anomaly_score": -0.0876977804526154,
+        "primary_reason": "after_hours_ratio (z=-1.48)"
+      },
+      {
+        "day": "2010-03-25",
+        "anomaly_score": -0.0215277252562757,
+        "primary_reason": "unique_pcs (z=-1.41)"
+      },
+      {
+        "day": "2010-03-26",
+        "anomaly_score": -0.0835181856345222,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-03-29",
+        "anomaly_score": -0.0849331252626377,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-03-30",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-03-31",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-04-01",
+        "anomaly_score": -0.0922526810451408,
+        "primary_reason": "after_hours_ratio (z=1.01)"
+      },
+      {
+        "day": "2010-04-05",
+        "anomaly_score": -0.0969724303317881,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-04-06",
+        "anomaly_score": -0.068192164603929,
+        "primary_reason": "after_hours_ratio (z=0.81)"
+      },
+      {
+        "day": "2010-04-07",
+        "anomaly_score": -0.08509229435341,
+        "primary_reason": "after_hours_ratio (z=1.01)"
+      },
+      {
+        "day": "2010-04-08",
+        "anomaly_score": -0.0631488127826798,
+        "primary_reason": "after_hours_ratio (z=-1.32)"
+      },
+      {
+        "day": "2010-04-09",
+        "anomaly_score": -0.0647379495254819,
+        "primary_reason": "after_hours_ratio (z=-0.32)"
+      },
+      {
+        "day": "2010-04-12",
+        "anomaly_score": -0.0988085072230223,
+        "primary_reason": "after_hours_ratio (z=1.85)"
+      },
+      {
+        "day": "2010-04-13",
+        "anomaly_score": -0.0872713276104394,
+        "primary_reason": "after_hours_ratio (z=1.01)"
+      },
+      {
+        "day": "2010-04-14",
+        "anomaly_score": -0.0406155166650753,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-04-15",
+        "anomaly_score": -0.0832467533118113,
+        "primary_reason": "after_hours_ratio (z=-1.48)"
+      },
+      {
+        "day": "2010-04-16",
+        "anomaly_score": -0.0888527981953769,
+        "primary_reason": "after_hours_ratio (z=1.68)"
+      },
+      {
+        "day": "2010-04-19",
+        "anomaly_score": -0.011602842466754,
+        "primary_reason": "logon_count (z=-1.80)"
+      },
+      {
+        "day": "2010-04-20",
+        "anomaly_score": -0.0406155166650753,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-04-21",
+        "anomaly_score": -0.0440704744815276,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-04-22",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-04-23",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-04-26",
+        "anomaly_score": -0.0388720611499664,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-04-27",
+        "anomaly_score": -0.0846048336284666,
+        "primary_reason": "after_hours_ratio (z=-0.65)"
+      },
+      {
+        "day": "2010-04-28",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-04-29",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-04-30",
+        "anomaly_score": -0.0406155166650753,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-05-03",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-05-04",
+        "anomaly_score": -0.087111727169725,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-05-05",
+        "anomaly_score": -0.0846048336284666,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-05-06",
+        "anomaly_score": -0.0354101109229795,
+        "primary_reason": "after_hours_ratio (z=-2.32)"
+      },
+      {
+        "day": "2010-05-07",
+        "anomaly_score": -0.0177283383949072,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-05-10",
+        "anomaly_score": -0.0813492959433037,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-05-12",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-05-13",
+        "anomaly_score": -0.0647379495254819,
+        "primary_reason": "after_hours_ratio (z=-0.32)"
+      },
+      {
+        "day": "2010-05-14",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-05-17",
+        "anomaly_score": -0.1016372721584135,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-05-18",
+        "anomaly_score": -0.0644728693536382,
+        "primary_reason": "device_connects (z=0.30)"
+      },
+      {
+        "day": "2010-05-19",
+        "anomaly_score": -0.0445716633731102,
+        "primary_reason": "device_connects (z=-0.78)"
+      },
+      {
+        "day": "2010-05-20",
+        "anomaly_score": -0.0305242059918799,
+        "primary_reason": "after_hours_ratio (z=-2.32)"
+      },
+      {
+        "day": "2010-05-21",
+        "anomaly_score": -0.0813492959433037,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-05-24",
+        "anomaly_score": -0.0865100094150362,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-05-26",
+        "anomaly_score": -0.0956506000405098,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-05-27",
+        "anomaly_score": -0.011602842466754,
+        "primary_reason": "logon_count (z=-1.80)"
+      },
+      {
+        "day": "2010-05-28",
+        "anomaly_score": -0.0835181856345222,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-06-01",
+        "anomaly_score": -0.0034415701448784,
+        "primary_reason": "logon_count (z=-1.80)"
+      },
+      {
+        "day": "2010-06-02",
+        "anomaly_score": -0.0647379495254819,
+        "primary_reason": "after_hours_ratio (z=-0.32)"
+      },
+      {
+        "day": "2010-06-03",
+        "anomaly_score": -0.0545047995266767,
+        "primary_reason": "device_connects (z=-0.78)"
+      },
+      {
+        "day": "2010-06-04",
+        "anomaly_score": -0.0956506000405098,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-06-07",
+        "anomaly_score": -0.0388720611499664,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-06-08",
+        "anomaly_score": -0.0347811464257415,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-06-09",
+        "anomaly_score": -0.1016372721584135,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-06-10",
+        "anomaly_score": -0.086606949998116,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-06-14",
+        "anomaly_score": -0.0972485067426048,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-06-15",
+        "anomaly_score": -0.0978009398275235,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-06-17",
+        "anomaly_score": -0.0406155166650753,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-06-18",
+        "anomaly_score": -0.0813492959433037,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-06-21",
+        "anomaly_score": -0.0560374791051783,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-06-22",
+        "anomaly_score": -0.090979142305592,
+        "primary_reason": "logon_count (z=1.23)"
+      },
+      {
+        "day": "2010-06-23",
+        "anomaly_score": -0.0567699956874182,
+        "primary_reason": "logon_count (z=-0.59)"
+      },
+      {
+        "day": "2010-06-24",
+        "anomaly_score": -0.0644728693536382,
+        "primary_reason": "device_connects (z=0.30)"
+      },
+      {
+        "day": "2010-06-25",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-06-28",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-06-29",
+        "anomaly_score": -0.0440704744815276,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-06-30",
+        "anomaly_score": -0.0440704744815276,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-07-01",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-07-02",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-07-06",
+        "anomaly_score": -0.0034415701448784,
+        "primary_reason": "logon_count (z=-1.80)"
+      },
+      {
+        "day": "2010-07-07",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-07-08",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-07-09",
+        "anomaly_score": -0.0952770683966118,
+        "primary_reason": "after_hours_ratio (z=1.43)"
+      },
+      {
+        "day": "2010-07-12",
+        "anomaly_score": -0.0406155166650753,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-07-13",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-07-14",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-07-15",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-07-16",
+        "anomaly_score": -0.0937238044675825,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-07-19",
+        "anomaly_score": -0.0835181856345222,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-07-20",
+        "anomaly_score": -0.0288866430409322,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-07-22",
+        "anomaly_score": -0.0575576838466198,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-07-23",
+        "anomaly_score": -0.0939987817045869,
+        "primary_reason": "logon_count (z=1.23)"
+      },
+      {
+        "day": "2010-07-27",
+        "anomaly_score": -0.090060184751883,
+        "primary_reason": "after_hours_ratio (z=1.01)"
+      },
+      {
+        "day": "2010-07-28",
+        "anomaly_score": -0.0964777673568565,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-07-30",
+        "anomaly_score": -0.1000144136500059,
+        "primary_reason": "logoff_count (z=1.80)"
+      },
+      {
+        "day": "2010-08-02",
+        "anomaly_score": -0.011602842466754,
+        "primary_reason": "logon_count (z=-1.80)"
+      },
+      {
+        "day": "2010-08-03",
+        "anomaly_score": -0.084004987187042,
+        "primary_reason": "after_hours_ratio (z=1.01)"
+      },
+      {
+        "day": "2010-08-04",
+        "anomaly_score": -0.0931333732416479,
+        "primary_reason": "logon_count (z=1.23)"
+      },
+      {
+        "day": "2010-08-05",
+        "anomaly_score": -0.1058119722460391,
+        "primary_reason": "logoff_count (z=1.80)"
+      },
+      {
+        "day": "2010-08-06",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-08-09",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-08-10",
+        "anomaly_score": -0.0983537468075795,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-08-11",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-08-12",
+        "anomaly_score": -0.078590466419642,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-08-13",
+        "anomaly_score": -0.0978009398275235,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-08-16",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-08-17",
+        "anomaly_score": -0.0631488127826798,
+        "primary_reason": "after_hours_ratio (z=-1.32)"
+      },
+      {
+        "day": "2010-08-18",
+        "anomaly_score": -0.0501289956489128,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-08-19",
+        "anomaly_score": -0.011602842466754,
+        "primary_reason": "logon_count (z=-1.80)"
+      },
+      {
+        "day": "2010-08-20",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-08-23",
+        "anomaly_score": -0.0567699956874182,
+        "primary_reason": "logon_count (z=-0.59)"
+      },
+      {
+        "day": "2010-08-24",
+        "anomaly_score": -0.0978009398275235,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-08-25",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-08-26",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-08-27",
+        "anomaly_score": -0.0865100094150362,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-08-31",
+        "anomaly_score": -0.0502369231120296,
+        "primary_reason": "logoff_count (z=-0.79)"
+      },
+      {
+        "day": "2010-09-01",
+        "anomaly_score": -0.0647379495254819,
+        "primary_reason": "after_hours_ratio (z=-0.32)"
+      },
+      {
+        "day": "2010-09-02",
+        "anomaly_score": -0.1018573357243126,
+        "primary_reason": "after_hours_ratio (z=1.85)"
+      },
+      {
+        "day": "2010-09-03",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-09-07",
+        "anomaly_score": -0.1016372721584135,
+        "primary_reason": "after_hours_ratio (z=1.61)"
+      },
+      {
+        "day": "2010-09-08",
+        "anomaly_score": -0.0612988920776411,
+        "primary_reason": "device_connects (z=-0.78)"
+      },
+      {
+        "day": "2010-09-09",
+        "anomaly_score": -0.0813492959433037,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-09-10",
+        "anomaly_score": -0.0892395272045117,
+        "primary_reason": "after_hours_ratio (z=1.01)"
+      },
+      {
+        "day": "2010-09-13",
+        "anomaly_score": -0.0956506000405098,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-09-14",
+        "anomaly_score": -0.0388720611499664,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-09-15",
+        "anomaly_score": -0.105475154334504,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-09-16",
+        "anomaly_score": -0.0112765904609365,
+        "primary_reason": "after_hours_ratio (z=-1.48)"
+      },
+      {
+        "day": "2010-09-17",
+        "anomaly_score": -0.0892395272045117,
+        "primary_reason": "after_hours_ratio (z=1.01)"
+      },
+      {
+        "day": "2010-09-20",
+        "anomaly_score": -0.0813492959433037,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-09-21",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-09-23",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-09-24",
+        "anomaly_score": -0.0964777673568565,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-09-27",
+        "anomaly_score": -0.0440704744815276,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-09-28",
+        "anomaly_score": -0.0931741289836702,
+        "primary_reason": "logon_count (z=1.83)"
+      },
+      {
+        "day": "2010-09-29",
+        "anomaly_score": -0.0680817178590711,
+        "primary_reason": "after_hours_ratio (z=1.85)"
+      },
+      {
+        "day": "2010-09-30",
+        "anomaly_score": -0.0440704744815276,
+        "primary_reason": "after_hours_ratio (z=-1.07)"
+      },
+      {
+        "day": "2010-10-04",
+        "anomaly_score": -0.0936667879358406,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-10-05",
+        "anomaly_score": -0.0956506000405098,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-10-06",
+        "anomaly_score": -0.0911963476840794,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-10-07",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-10-08",
+        "anomaly_score": -0.0631488127826798,
+        "primary_reason": "after_hours_ratio (z=-1.32)"
+      },
+      {
+        "day": "2010-10-11",
+        "anomaly_score": -0.1016372721584135,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-10-12",
+        "anomaly_score": -0.0937238044675825,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-10-13",
+        "anomaly_score": -0.025470307534959,
+        "primary_reason": "after_hours_ratio (z=-2.32)"
+      },
+      {
+        "day": "2010-10-14",
+        "anomaly_score": -0.0264132441998672,
+        "primary_reason": "device_connects (z=-1.32)"
+      },
+      {
+        "day": "2010-10-15",
+        "anomaly_score": -0.0813492959433037,
+        "primary_reason": "unique_pcs (z=0.64)"
+      },
+      {
+        "day": "2010-10-18",
+        "anomaly_score": -0.0567699956874182,
+        "primary_reason": "logon_count (z=-0.59)"
+      },
+      {
+        "day": "2010-10-19",
+        "anomaly_score": -0.0972485067426048,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-10-20",
+        "anomaly_score": -0.0631488127826798,
+        "primary_reason": "after_hours_ratio (z=-1.32)"
+      },
+      {
+        "day": "2010-10-21",
+        "anomaly_score": -0.0575576838466198,
+        "primary_reason": "logon_count (z=-1.20)"
+      },
+      {
+        "day": "2010-10-22",
+        "anomaly_score": -0.0835181856345222,
+        "primary_reason": "device_connects (z=0.84)"
+      },
+      {
+        "day": "2010-10-25",
+        "anomaly_score": -0.0964777673568565,
+        "primary_reason": "device_connects (z=1.39)"
+      },
+      {
+        "day": "2010-10-26",
+        "anomaly_score": -0.0043925303673864,
+        "primary_reason": "logoff_count (z=-1.44)"
+      },
+      {
+        "day": "2010-10-27",
+        "anomaly_score": -0.0888527981953769,
+        "primary_reason": "after_hours_ratio (z=1.68)"
+      },
+      {
+        "day": "2010-10-28",
+        "anomaly_score": -0.1001929319881003,
+        "primary_reason": "after_hours_ratio (z=1.85)"
+      },
+      {
+        "day": "2010-10-29",
+        "anomaly_score": -0.0289391144761337,
+        "primary_reason": "device_connects (z=-1.32)"
+      },
+      {
+        "day": "2010-11-01",
+        "anomaly_score": -0.0686144104164444,
+        "primary_reason": "after_hours_ratio (z=0.68)"
+      },
+      {
+        "day": "2010-11-02",
+        "anomaly_score": -0.1016372721584135,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-11-03",
+        "anomaly_score": -0.0991426015692054,
+        "primary_reason": "unique_pcs (z=1.33)"
+      },
+      {
+        "day": "2010-11-04",
+        "anomaly_score": -0.0796704418452655,
+        "primary_reason": "unique_pcs (z=-0.72)"
+      },
+      {
+        "day": "2010-11-05",
+        "anomaly_score": -0.0756838091739736,
+        "primary_reason": "logon_count (z=0.62)"
+      }
+    ]
   }
 ]

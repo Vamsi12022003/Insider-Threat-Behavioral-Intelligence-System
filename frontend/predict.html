@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Insider Threat System - Live Prediction</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 20px; }
+  h2 { text-align: center; }
+  .upload-box { text-align: center; margin: 20px 0; padding: 20px; border: 2px dashed #ccc; border-radius: 8px; }
+  input[type="file"] { margin: 10px 0; }
+  button { background: #2563eb; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; font-size: 14px; }
+  button:hover { background: #1d4ed8; }
+  button:disabled { background: #999; cursor: not-allowed; }
+  table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; }
+  th { background: #f3f4f6; }
+  .Insider { background: #fee2e2; color: #991b1b; font-weight: bold; }
+  .Normal { background: #dcfce7; color: #166534; }
+  #message { text-align: center; margin-top: 10px; font-weight: bold; }
+  #summary { text-align: center; margin-top: 15px; font-size: 15px; }
+  a { color: #2563eb; }
+</style>
+</head>
+<body>
+<h2>Live Insider Threat Prediction</h2>
+<p style="text-align:center; color:#555;">
+  Upload a CSV of activity rows (columns: user, day, logon_count, logoff_count, unique_pcs, after_hours_ratio, device_connects).
+  Each row is processed one at a time through the trained model.
+</p>
+
+<div class="upload-box">
+  <input type="file" id="csvFile" accept=".csv">
+  <br>
+  <button onclick="runPredict()" id="predictBtn">Predict</button>
+</div>
+
+<div id="message"></div>
+<div id="summary"></div>
+<table id="resultsTable" style="display:none;">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Day</th>
+      <th>Prediction</th>
+      <th>Anomaly Score</th>
+      <th>Baseline Source</th>
+    </tr>
+  </thead>
+  <tbody id="resultsBody"></tbody>
+</table>
+
+<p style="text-align:center; margin-top:30px;">
+  <a href="index.html">&larr; Back to Login</a>
+</p>
+
+<script>
+  const API_BASE = "http://127.0.0.1:8000";
+
+  async function runPredict() {
+    const fileInput = document.getElementById("csvFile");
+    const messageEl = document.getElementById("message");
+    const summaryEl = document.getElementById("summary");
+    const table = document.getElementById("resultsTable");
+    const tbody = document.getElementById("resultsBody");
+    const btn = document.getElementById("predictBtn");
+
+    messageEl.style.color = "black";
+    messageEl.innerText = "";
+    summaryEl.innerText = "";
+    table.style.display = "none";
+    tbody.innerHTML = "";
+
+    if (!fileInput.files.length) {
+      messageEl.style.color = "red";
+      messageEl.innerText = "Please choose a CSV file first.";
+      return;
+    }
+
+    const token = localStorage.getItem("access_token");
+    if (!token) {
+      messageEl.style.color = "red";
+      messageEl.innerText = "Not logged in. Please log in first.";
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", fileInput.files[0]);
+
+    btn.disabled = true;
+    btn.innerText = "Processing...";
+    messageEl.innerText = "Sending file to prediction engine...";
+
+    try {
+      const res = await fetch(`${API_BASE}/predict`, {
+        method: "POST",
+        headers: { "Authorization": `Bearer ${token}` },
+        body: formData
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        messageEl.style.color = "red";
+        messageEl.innerText = data.detail || "Prediction failed.";
+        return;
+      }
+
+      messageEl.style.color = "green";
+      messageEl.innerText = `Processed ${data.count} row(s).`;
+
+      const insiderCount = data.predictions.filter(p => p.prediction === "Insider").length;
+      summaryEl.innerText = `${insiderCount} flagged as Insider, ${data.count - insiderCount} Normal.`;
+
+      data.predictions.forEach(p => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${p.user ?? ""}</td>
+          <td>${p.day ?? ""}</td>
+          <td class="${p.prediction}">${p.prediction}</td>
+          <td>${p.anomaly_score.toFixed(5)}</td>
+          <td>${p.baseline_source}</td>
+        `;
+        tbody.appendChild(row);
+      });
+      table.style.display = "table";
+
+    } catch (err) {
+      messageEl.style.color = "red";
+      messageEl.innerText = "Could not reach server. Is the backend running?";
+    } finally {
+      btn.disabled = false;
+      btn.innerText = "Predict";
+    }
+  }
+</script>
+</body>
+</html>

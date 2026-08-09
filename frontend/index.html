@@ -79,16 +79,18 @@
     const username = document.getElementById("loginUsername").value;
     const password = document.getElementById("loginPassword").value;
     try {
+      const formData = new URLSearchParams();
+      formData.append("username", username);
+      formData.append("password", password);
       const res = await fetch(`${API_BASE}/login`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password })
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formData
       });
       const data = await res.json();
       if (res.ok) {
         localStorage.setItem("access_token", data.access_token);
-        document.getElementById("message").style.color = "green";
-        document.getElementById("message").innerText = "Login successful! Token stored.";
+        window.location.href = "predict.html";
       } else {
         document.getElementById("message").style.color = "red";
         document.getElementById("message").innerText = data.detail || "Login failed.";
