@@ -90,7 +90,7 @@
       const data = await res.json();
       if (res.ok) {
         localStorage.setItem("access_token", data.access_token);
-        window.location.href = "predict.html";
+        window.location.href = "dashboard.html";
       } else {
         document.getElementById("message").style.color = "red";
         document.getElementById("message").innerText = data.detail || "Login failed.";
