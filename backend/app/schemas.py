@@ -27,6 +27,14 @@ class EmployeeCreate(BaseModel):
     device_info: str | None = None
     access_privileges: str | None = None
 
+class EmployeeUpdate(BaseModel):
+    full_name: str | None = None
+    department: str | None = None
+    designation: str | None = None
+    manager: str | None = None
+    device_info: str | None = None
+    access_privileges: str | None = None
+
 class EmployeeOut(BaseModel):
     id: int
     employee_id: str

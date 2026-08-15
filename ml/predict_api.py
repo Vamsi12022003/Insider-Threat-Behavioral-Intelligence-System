@@ -9,6 +9,7 @@ router = APIRouter()
 
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "insider_model.pkl")
 BASELINES_PATH = os.path.join(os.path.dirname(__file__), "user_baselines.csv")
+MANUAL_LOG_PATH = os.path.join(os.path.dirname(__file__), "manual_predictions_log.csv")
 
 FEATURE_COLS = ["logon_count", "logoff_count", "unique_pcs", "after_hours_ratio", "device_connects"]
 
@@ -27,6 +28,23 @@ def _load():
         _baselines = pd.read_csv(BASELINES_PATH).set_index("user")
         _global_means = _baselines[[f"{c}_mean" for c in FEATURE_COLS]].mean()
         _global_stds = _baselines[[f"{c}_std" for c in FEATURE_COLS]].mean()
+
+
+def _risk_category(risk_score: float) -> str:
+    if risk_score >= 75:
+        return "Critical"
+    elif risk_score >= 50:
+        return "High"
+    elif risk_score >= 25:
+        return "Medium"
+    else:
+        return "Low"
+
+
+def _log_manual_prediction(result: dict):
+    file_exists = os.path.isfile(MANUAL_LOG_PATH)
+    row = pd.DataFrame([result])
+    row.to_csv(MANUAL_LOG_PATH, mode="a", header=not file_exists, index=False)
 
 
 def _score_row(row: dict):
@@ -48,15 +66,21 @@ def _score_row(row: dict):
     risk_score = max(0.0, min(100.0, (0.5 - anomaly_score) * 100))
     confidence = max(0.0, min(100.0, abs(anomaly_score) * 100 + 50))
 
-    return {
+    result = {
         "user": user,
         "day": row.get("day"),
         "prediction": "Insider" if is_anomaly == -1 else "Normal",
         "anomaly_score": float(anomaly_score),
         "risk_score": round(float(risk_score), 2),
+        "risk_category": _risk_category(risk_score),
         "confidence": round(float(confidence), 2),
         "baseline_source": source,
     }
+
+    if user == "manual_input":
+        _log_manual_prediction(result)
+
+    return result
 
 
 @router.post("/predict")

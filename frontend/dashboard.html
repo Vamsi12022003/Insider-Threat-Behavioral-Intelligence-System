@@ -2,68 +2,179 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Insider Threat Dashboard</title>
+<title>Insider Threat Behavioral Intelligence System</title>
 <style>
-  body { background:#0d1117; color:#c9d1d9; font-family:'Segoe UI',sans-serif; margin:0; padding:0; }
-  header { background:#161b22; border-bottom:1px solid #30363d; padding:16px 24px; display:flex; justify-content:space-between; align-items:center; }
-  header h1 { color:#58a6ff; font-size:20px; margin:0; }
-  .userbox { display:flex; align-items:center; gap:12px; font-size:13px; color:#8b949e; }
-  .role-badge { background:#1f6feb; color:white; padding:3px 10px; border-radius:12px; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; }
-  .logout-btn { background:#21262d; color:#c9d1d9; border:1px solid #30363d; padding:6px 12px; border-radius:6px; cursor:pointer; font-size:13px; }
-  .logout-btn:hover { background:#30363d; }
-  nav { display:flex; gap:8px; padding:12px 24px; background:#0d1117; border-bottom:1px solid #30363d; }
-  nav button { background:#161b22; color:#c9d1d9; border:1px solid #30363d; padding:8px 16px; border-radius:6px; cursor:pointer; }
-  nav button.active { background:#1f6feb; color:white; border-color:#1f6feb; }
-  main { padding:24px; }
+  * { box-sizing: border-box; }
+  body { background:#f4f6fb; color:#1e293b; font-family:'Segoe UI',Arial,sans-serif; margin:0; padding:0; display:flex; min-height:100vh; }
+
+  /* Sidebar */
+  aside { width:260px; background:#ffffff; border-right:1px solid #e2e8f0; padding:24px 20px; display:flex; flex-direction:column; }
+  .brand { display:flex; align-items:center; gap:8px; font-weight:700; color:#0f172a; font-size:1.1rem; margin-bottom:4px; }
+  .brand .icon { color:#2563eb; }
+  .signed-in { font-size:0.85rem; color:#334155; margin-top:10px; }
+  .signed-in b { color:#0f172a; }
+  .tagline { font-size:0.8rem; color:#64748b; margin-top:6px; margin-bottom:20px; line-height:1.4; }
+  hr.sep { border:none; border-top:1px solid #e2e8f0; margin:14px 0; }
+  .role-badge { display:inline-block; background:#2563eb; color:white; padding:2px 10px; border-radius:12px; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.5px; margin-top:6px; }
+
+  nav#navBar { display:flex; flex-direction:column; gap:10px; margin-top:6px; }
+  nav#navBar button {
+    background:#2563eb; color:white; border:none; padding:12px 16px;
+    border-radius:8px; cursor:pointer; font-size:0.95rem; text-align:left; font-weight:600;
+  }
+  nav#navBar button.active { background:#1d4ed8; box-shadow: inset 0 0 0 2px #93c5fd; }
+  nav#navBar button:hover { background:#1d4ed8; }
+
+  .logout-btn {
+    margin-top:auto; background:#ffffff; color:#dc2626; border:1px solid #fecaca;
+    padding:12px 16px; border-radius:8px; cursor:pointer; font-weight:600; font-size:0.95rem;
+  }
+  .logout-btn:hover { background:#fef2f2; }
+
+  /* Main content */
+  main { flex:1; padding:32px 40px; }
+  main h2 { color:#0f172a; margin-top:0; }
+  .card {
+    background:white; border:1px solid #e2e8f0; border-radius:12px;
+    padding:20px 24px; box-shadow:0 2px 10px rgba(15,23,42,0.04);
+  }
+  .summary { display:flex; gap:16px; margin-bottom:24px; }
+  .summary .card { flex:1; text-align:center; }
+  .summary .card h2 { margin:0; font-size:28px; }
+  .Low h2 { color:#16a34a; }
+  .Medium h2 { color:#d97706; }
+  .High h2 { color:#dc2626; }
+  .Critical h2 { color:#991b1b; }
+
+  table { width:100%; border-collapse:collapse; background:white; border:1px solid #e2e8f0; border-radius:8px; overflow:hidden; }
+  th,td { padding:10px 12px; text-align:left; border-bottom:1px solid #e2e8f0; }
+  th { color:#2563eb; background:#eff6ff; }
+  tr:hover { background:#f8fafc; }
+
+  input[type=text],input[type=file],input[type=number] {
+    padding:9px 10px; margin-bottom:12px; background:white; color:#1e293b;
+    border:1px solid #cbd5e1; border-radius:6px;
+  }
+  select {
+    padding:9px 10px; margin-bottom:16px; background:white; color:#1e293b;
+    border:1px solid #cbd5e1; border-radius:6px; width:100%; max-width:320px;
+  }
+  button.action { background:#2563eb; color:white; border:none; padding:10px 18px; border-radius:8px; cursor:pointer; font-weight:600; }
+  button.action:hover { background:#1d4ed8; }
+  button.small-action { background:#f1f5f9; color:#1e293b; border:1px solid #cbd5e1; padding:5px 10px; border-radius:6px; cursor:pointer; font-size:12px; }
+  button.small-action:hover { background:#e2e8f0; }
+
+  .status-tag { padding:2px 8px; border-radius:4px; font-size:12px; }
+  .investigating { background:#fef3c7; color:#92400e; }
+  .resolved { background:#dcfce7; color:#166534; }
+  .open { background:#f1f5f9; color:#475569; }
+  .acknowledged { background:#dbeafe; color:#1e40af; }
+  .sev-Critical { background:#fee2e2; color:#991b1b; }
+  .sev-High { background:#fef3c7; color:#b45309; }
+
   .tab { display:none; }
   .tab.active { display:block; }
-  .summary { display:flex; gap:16px; margin-bottom:24px; }
-  .card { background:#161b22; border:1px solid #30363d; border-radius:8px; padding:16px 24px; flex:1; text-align:center; }
-  .card h2 { margin:0; font-size:28px; }
-  .Low h2 { color:#3fb950; }
-  .Medium h2 { color:#d29922; }
-  .High h2 { color:#f85149; }
-  .Critical h2 { color:#ff6b81; }
-  table { width:100%; border-collapse:collapse; background:#161b22; border:1px solid #30363d; }
-  th,td { padding:10px; text-align:left; border-bottom:1px solid #30363d; }
-  th { color:#58a6ff; }
-  tr:hover { background:#1c2128; }
-  input[type=text],input[type=file] { padding:8px; margin-bottom:12px; width:280px; background:#0d1117; color:#c9d1d9; border:1px solid #30363d; border-radius:4px; }
-  button.action { background:#1f6feb; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; }
-  button.small-action { background:#21262d; color:#c9d1d9; border:1px solid #30363d; padding:4px 10px; border-radius:4px; cursor:pointer; font-size:12px; }
-  button.small-action:hover { background:#30363d; }
-  .status-tag { padding:2px 8px; border-radius:4px; font-size:12px; }
-  .investigating { background:#3d2e0a; color:#d29922; }
-  .resolved { background:#0f2d1f; color:#3fb950; }
-  .open { background:#1c2128; color:#8b949e; }
-  .acknowledged { background:#0d2438; color:#58a6ff; }
-  .sev-Critical { background:#3d0e14; color:#ff6b81; }
-  .sev-High { background:#3d2e0a; color:#f85149; }
-  pre { white-space:pre-wrap; word-break:break-word; }
-  .access-denied { color:#8b949e; padding:40px; text-align:center; }
+  .access-denied { color:#64748b; padding:40px; text-align:center; }
+
+  /* Prediction page */
+  .field-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px 40px; margin:20px 0; max-width:800px; }
+  .field-label { font-size:0.85rem; font-weight:600; color:#334155; margin-bottom:4px; display:block; }
+  .stepper { display:flex; align-items:center; gap:8px; }
+  .stepper input { flex:1; margin-bottom:0; text-align:left; }
+  .stepper button { width:30px; height:36px; border:1px solid #cbd5e1; background:#f8fafc; border-radius:6px; cursor:pointer; font-weight:700; color:#334155; }
+  .stepper button:hover { background:#e2e8f0; }
+
+  .result-banner { padding:18px 22px; border-radius:10px; margin:20px 0; }
+  .result-banner.insider { background:#fee2e2; border:1px solid #fecaca; color:#991b1b; }
+  .result-banner.normal { background:#dcfce7; border:1px solid #bbf7d0; color:#166534; }
+  .result-banner .title { font-weight:700; font-size:1.05rem; margin-bottom:4px; }
+
+  .stat-grid { display:flex; gap:40px; margin-top:16px; flex-wrap:wrap; }
+  .stat-block .stat-label { font-size:0.85rem; color:#64748b; }
+  .stat-block .stat-value { font-size:1.6rem; font-weight:700; color:#0f172a; }
+
+  pre { white-space:pre-wrap; word-break:break-word; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:16px; }
 </style>
 </head>
 <body>
 
-<header>
-  <h1>Insider Threat Behavioral Intelligence System</h1>
-  <div class="userbox">
-    <span id="usernameLabel"></span>
-    <span class="role-badge" id="roleLabel"></span>
-    <button class="logout-btn" onclick="logout()">Log out</button>
-  </div>
-</header>
-
-<nav id="navBar"></nav>
+<aside>
+  <div class="brand"><span class="icon">&#128737;</span> Security Command Center</div>
+  <div class="signed-in">Signed in as: <b id="usernameLabel"></b></div>
+  <span class="role-badge" id="roleLabel"></span>
+  <div class="tagline">Behavioral intelligence for proactive insider-threat monitoring</div>
+  <hr class="sep">
+  <nav id="navBar"></nav>
+  <button class="logout-btn" onclick="logout()">Log out</button>
+</aside>
 
 <main>
 
   <div id="predictTab" class="tab">
-    <h2>Live CSV Prediction</h2>
-    <input type="file" id="csvFile" accept=".csv">
-    <br>
-    <button class="action" onclick="uploadCSV()">Run Prediction</button>
-    <div id="predictResults" style="margin-top:20px;"></div>
+    <h2>Threat Prediction</h2>
+    <p style="color:#64748b;">Enter behavioral telemetry or upload a file to identify potentially risky users.</p>
+
+    <label class="field-label" for="predictMethod">Prediction Method</label>
+    <select id="predictMethod" onchange="switchPredictMethod()">
+      <option value="manual">Manual Input</option>
+      <option value="upload">Upload File</option>
+    </select>
+
+    <div id="manualPredictBlock">
+      <h3 style="color:#2563eb;">Behavioral Input Features</h3>
+      <div class="field-grid">
+        <div>
+          <label class="field-label">Logon Count</label>
+          <div class="stepper">
+            <button onclick="stepField('logon_count',-1)">-</button>
+            <input type="number" id="f_logon_count" value="0">
+            <button onclick="stepField('logon_count',1)">+</button>
+          </div>
+        </div>
+        <div>
+          <label class="field-label">Logoff Count</label>
+          <div class="stepper">
+            <button onclick="stepField('logoff_count',-1)">-</button>
+            <input type="number" id="f_logoff_count" value="0">
+            <button onclick="stepField('logoff_count',1)">+</button>
+          </div>
+        </div>
+        <div>
+          <label class="field-label">Unique PCs</label>
+          <div class="stepper">
+            <button onclick="stepField('unique_pcs',-1)">-</button>
+            <input type="number" id="f_unique_pcs" value="0">
+            <button onclick="stepField('unique_pcs',1)">+</button>
+          </div>
+        </div>
+        <div>
+          <label class="field-label">Device Connects</label>
+          <div class="stepper">
+            <button onclick="stepField('device_connects',-1)">-</button>
+            <input type="number" id="f_device_connects" value="0">
+            <button onclick="stepField('device_connects',1)">+</button>
+          </div>
+        </div>
+        <div>
+          <label class="field-label">After Hours Ratio</label>
+          <div class="stepper">
+            <button onclick="stepField('after_hours_ratio',-0.1)">-</button>
+            <input type="number" step="0.01" id="f_after_hours_ratio" value="0">
+            <button onclick="stepField('after_hours_ratio',0.1)">+</button>
+          </div>
+        </div>
+      </div>
+      <button class="action" onclick="runManualPrediction()">Predict Risk</button>
+    </div>
+
+    <div id="uploadPredictBlock" style="display:none;">
+      <h3 style="color:#2563eb;">Live CSV Prediction</h3>
+      <input type="file" id="csvFile" accept=".csv">
+      <br>
+      <button class="action" onclick="uploadCSV()">Run Prediction</button>
+    </div>
+
+    <div id="predictResults" style="margin-top:24px;"></div>
   </div>
 
   <div id="riskTab" class="tab">
@@ -94,24 +205,31 @@
     </table>
   </div>
 
+  <div id="employeesTab" class="tab">
+    <h2>Employee Directory</h2>
+    <input type="text" id="employeeSearchBox" placeholder="Filter by name or ID...">
+    <table>
+      <thead><tr><th>Employee ID</th><th>Full Name</th><th>Department</th><th>Designation</th><th>Manager</th><th>Access</th></tr></thead>
+      <tbody id="employeesTableBody"></tbody>
+    </table>
+  </div>
+
 </main>
 
 <script>
 const API_BASE = "http://127.0.0.1:8000";
 
-// ---- Auth / Role gating ----
-// Tabs each role is allowed to see. Matches the free-text role strings
-// issued at registration and enforced server-side in rbac.py.
 const ROLE_TABS = {
   security_analyst: ["predictTab", "riskTab", "incidentsTab", "alertsTab"],
   security_manager: ["riskTab", "alertsTab"],
-  admin:            ["predictTab", "riskTab", "incidentsTab", "alertsTab"],
+  admin:            ["predictTab", "riskTab", "incidentsTab", "alertsTab", "employeesTab"],
 };
 const TAB_LABELS = {
-  predictTab: "Predict",
+  predictTab: "Prediction",
   riskTab: "Risk Scores",
   incidentsTab: "Incidents",
   alertsTab: "Alerts",
+  employeesTab: "Employees",
 };
 
 function decodeJwtPayload(token) {
@@ -142,7 +260,6 @@ const allowedTabs = ROLE_TABS[currentRole] || [];
 document.getElementById("usernameLabel").textContent = claims.sub || "";
 document.getElementById("roleLabel").textContent = currentRole.replace("_", " ");
 
-// Build nav dynamically from whatever this role is allowed to see
 const navBar = document.getElementById("navBar");
 if (allowedTabs.length === 0) {
   document.querySelector("main").innerHTML =
@@ -165,13 +282,12 @@ if (allowedTabs.length === 0) {
     });
   });
 
-  // Only load data for tabs this role can actually see
   if (allowedTabs.includes("riskTab")) { loadSummary(); loadRiskScores(); }
   if (allowedTabs.includes("incidentsTab")) { loadIncidents(); }
   if (allowedTabs.includes("alertsTab")) { loadAlerts(); loadAlertsSummary(); }
+  if (allowedTabs.includes("employeesTab")) { loadEmployees(); }
 }
 
-// ---- Risk Scores ----
 async function loadSummary() {
   const res = await fetch(`${API_BASE}/risk-scores/summary`);
   const data = await res.json();
@@ -204,7 +320,6 @@ function renderRiskTable(rows) {
   });
 }
 
-// ---- Incidents ----
 async function loadIncidents() {
   const res = await fetch(`${API_BASE}/incidents`);
   const data = await res.json();
@@ -222,7 +337,42 @@ async function loadIncidents() {
   });
 }
 
-// ---- Predict ----
+function switchPredictMethod() {
+  const mode = document.getElementById("predictMethod").value;
+  document.getElementById("manualPredictBlock").style.display = mode === "manual" ? "block" : "none";
+  document.getElementById("uploadPredictBlock").style.display = mode === "upload" ? "block" : "none";
+  document.getElementById("predictResults").innerHTML = "";
+}
+
+function stepField(field, delta) {
+  const el = document.getElementById("f_" + field);
+  let val = parseFloat(el.value) || 0;
+  val = Math.round((val + delta) * 100) / 100;
+  if (val < 0) val = 0;
+  el.value = val;
+}
+
+async function runManualPrediction() {
+  const cols = ["user", "day", "logon_count", "logoff_count", "unique_pcs", "after_hours_ratio", "device_connects"];
+  const row = {
+    user: "manual_input",
+    day: new Date().toISOString().slice(0, 10),
+    logon_count: document.getElementById("f_logon_count").value || 0,
+    logoff_count: document.getElementById("f_logoff_count").value || 0,
+    unique_pcs: document.getElementById("f_unique_pcs").value || 0,
+    after_hours_ratio: document.getElementById("f_after_hours_ratio").value || 0,
+    device_connects: document.getElementById("f_device_connects").value || 0,
+  };
+  const csv = cols.join(",") + "\n" + cols.map(c => row[c]).join(",") + "\n";
+  const blob = new Blob([csv], { type: "text/csv" });
+  const formData = new FormData();
+  formData.append("file", blob, "manual_input.csv");
+
+  const res = await fetch(`${API_BASE}/predict`, { method: "POST", body: formData });
+  const data = await res.json();
+  renderPredictionResult(data);
+}
+
 async function uploadCSV() {
   const fileInput = document.getElementById("csvFile");
   if (!fileInput.files.length) { alert("Choose a CSV file first."); return; }
@@ -230,11 +380,34 @@ async function uploadCSV() {
   formData.append("file", fileInput.files[0]);
   const res = await fetch(`${API_BASE}/predict`, { method: "POST", body: formData });
   const data = await res.json();
-  const resultsDiv = document.getElementById("predictResults");
-  resultsDiv.innerHTML = `<pre style="background:#161b22;padding:16px;border-radius:8px;overflow:auto;">${JSON.stringify(data, null, 2)}</pre>`;
+  renderPredictionResult(data);
 }
 
-// ---- Alerts ----
+function renderPredictionResult(data) {
+  const resultsDiv = document.getElementById("predictResults");
+  if (!data.predictions || !data.predictions.length) {
+    resultsDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+    return;
+  }
+
+  let html = "";
+  data.predictions.forEach(p => {
+    const isInsider = p.prediction === "Insider";
+    html += `
+      <div class="result-banner ${isInsider ? "insider" : "normal"}">
+        <div class="title">${isInsider ? "\u26A0\uFE0F INSIDER THREAT DETECTED" : "\u2713 Normal Behavior"}</div>
+        <div>User: ${p.user} &middot; Day: ${p.day}</div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-block"><div class="stat-label">Prediction</div><div class="stat-value">${p.prediction}</div></div>
+        <div class="stat-block"><div class="stat-label">Confidence</div><div class="stat-value">${p.confidence ?? "-"}%</div></div>
+        <div class="stat-block"><div class="stat-label">Risk Score</div><div class="stat-value">${p.risk_score ?? "-"} / 100</div></div>
+        <div class="stat-block"><div class="stat-label">Baseline Source</div><div class="stat-value" style="font-size:0.95rem;">${p.baseline_source ?? "-"}</div></div>
+      </div>`;
+  });
+  resultsDiv.innerHTML = html;
+}
+
 async function loadAlertsSummary() {
   const res = await fetch(`${API_BASE}/alerts/summary`);
   const data = await res.json();
@@ -283,6 +456,36 @@ async function generateAlerts() {
   alert(`Generated ${data.generated} new alert(s).`);
   loadAlerts();
   loadAlertsSummary();
+}
+async function loadEmployees() {
+  const res = await fetch(`${API_BASE}/employees`, {
+    headers: { "Authorization": `Bearer ${token}` }
+  });
+  const data = await res.json();
+  renderEmployeesTable(data);
+  document.getElementById("employeeSearchBox").addEventListener("input", (e) => {
+    const q = e.target.value.toLowerCase();
+    const filtered = data.filter(emp =>
+      (emp.full_name || "").toLowerCase().includes(q) ||
+      (emp.employee_id || "").toLowerCase().includes(q)
+    );
+    renderEmployeesTable(filtered);
+  });
+}
+
+function renderEmployeesTable(rows) {
+  const tbody = document.getElementById("employeesTableBody");
+  tbody.innerHTML = "";
+  rows.forEach(emp => {
+    tbody.innerHTML += `<tr>
+      <td>${emp.employee_id}</td>
+      <td>${emp.full_name}</td>
+      <td>${emp.department ?? "-"}</td>
+      <td>${emp.designation ?? "-"}</td>
+      <td>${emp.manager ?? "-"}</td>
+      <td>${emp.access_privileges ?? "-"}</td>
+    </tr>`;
+  });
 }
 </script>
 

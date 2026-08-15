@@ -92,6 +92,23 @@ def get_employee(
         raise HTTPException(status_code=404, detail="Employee not found")
     return emp
 
+@app.put("/employees/{employee_id}")
+def update_employee(
+    employee_id: str,
+    payload: schemas.EmployeeUpdate,
+    db: Session = Depends(get_db),
+    current_user: dict = Depends(require_role("admin")),
+):
+    emp = db.query(models.Employee).filter(models.Employee.employee_id == employee_id).first()
+    if not emp:
+        raise HTTPException(status_code=404, detail="Employee not found")
+    update_data = payload.model_dump(exclude_unset=True)
+    for field, value in update_data.items():
+        setattr(emp, field, value)
+    db.commit()
+    db.refresh(emp)
+    return emp
+
 @app.delete("/employees/{employee_id}")
 def delete_employee(
     employee_id: str,
