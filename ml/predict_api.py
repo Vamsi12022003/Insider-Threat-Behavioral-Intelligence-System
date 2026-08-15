@@ -42,11 +42,19 @@ def _score_row(row: dict):
     anomaly_score = _model.decision_function(feature_vector)[0]
     is_anomaly = _model.predict(feature_vector)[0]  # -1 anomaly, 1 normal
 
+    # Derived risk score: anomaly_score is roughly centered at 0
+    # (negative = anomalous, positive = normal). Mapped to a 0-100 risk scale.
+    # This is a direct transform of anomaly_score, not a model-native probability.
+    risk_score = max(0.0, min(100.0, (0.5 - anomaly_score) * 100))
+    confidence = max(0.0, min(100.0, abs(anomaly_score) * 100 + 50))
+
     return {
         "user": user,
         "day": row.get("day"),
         "prediction": "Insider" if is_anomaly == -1 else "Normal",
         "anomaly_score": float(anomaly_score),
+        "risk_score": round(float(risk_score), 2),
+        "confidence": round(float(confidence), 2),
         "baseline_source": source,
     }
 
