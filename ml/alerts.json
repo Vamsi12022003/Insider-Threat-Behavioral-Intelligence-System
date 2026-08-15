@@ -166,5 +166,17 @@
     "created_at": "2026-08-09T05:33:03.908144+00:00",
     "updated_at": "2026-08-09T05:33:03.908144+00:00",
     "note": null
+  },
+  {
+    "id": "ALT0015",
+    "user": "AJF0370",
+    "risk_score": 0.9762209214556012,
+    "risk_category": "Critical",
+    "severity": "Critical",
+    "message": "User 'AJF0370' flagged as Critical insider risk (score 0.9762209214556012).",
+    "status": "open",
+    "created_at": "2026-08-13T06:09:18.213965+00:00",
+    "updated_at": "2026-08-13T06:09:18.213965+00:00",
+    "note": null
   }
 ]
