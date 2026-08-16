@@ -22,7 +22,8 @@ user, to show whether a user's flagged behavior is increasing, decreasing,
 or stable over time.
 """
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
+from app.rbac import require_role
 import pandas as pd
 import os
 
@@ -54,7 +55,7 @@ def _load_anomalies():
 
 
 @router.get("/ueba/{user}/peer-comparison")
-def peer_comparison(user: str):
+def peer_comparison(user: str, current_user: dict = Depends(require_role("security_analyst", "security_manager", "admin"))):
     """
     Org-wide population percentile comparison (NOT department/role peer
     comparison - see module scope note above).
@@ -88,7 +89,7 @@ def peer_comparison(user: str):
 
 
 @router.get("/ueba/{user}/trend")
-def trend_analysis(user: str):
+def trend_analysis(user: str, current_user: dict = Depends(require_role("security_analyst", "security_manager", "admin"))):
     """Monthly anomaly count for this user - is flagged behavior increasing or not."""
     df = _load_anomalies()
     user_anomalies = df[df["user"] == user].copy()

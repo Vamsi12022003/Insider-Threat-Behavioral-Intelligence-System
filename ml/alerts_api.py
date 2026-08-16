@@ -9,7 +9,8 @@ Wire into main.py the same way risk_api and investigation_api are wired:
     app.include_router(alerts_router)
 """
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
+from app.rbac import require_role
 from pydantic import BaseModel
 from typing import List, Optional
 from datetime import datetime, timezone
@@ -59,7 +60,7 @@ def _load_risk_scores() -> pd.DataFrame:
 
 
 @router.post("/alerts/generate")
-def generate_alerts():
+def generate_alerts(current_user: dict = Depends(require_role("security_analyst", "security_manager", "admin"))):
     """
     Scans current risk scores and creates a new alert for any user in
     High/Critical risk who doesn't already have an OPEN alert.
@@ -107,7 +108,7 @@ def generate_alerts():
 
 
 @router.get("/alerts")
-def list_alerts(status: Optional[str] = None, severity: Optional[str] = None):
+def list_alerts(status: Optional[str] = None, severity: Optional[str] = None, current_user: dict = Depends(require_role("security_analyst", "security_manager", "admin"))):
     """Optional filters: ?status=open&severity=Critical"""
     alerts = _load_alerts()
     if status:
@@ -119,7 +120,7 @@ def list_alerts(status: Optional[str] = None, severity: Optional[str] = None):
 
 
 @router.get("/alerts/summary")
-def alerts_summary():
+def alerts_summary(current_user: dict = Depends(require_role("security_analyst", "security_manager", "admin"))):
     alerts = _load_alerts()
     summary = {"open": 0, "acknowledged": 0, "resolved": 0}
     for a in alerts:
@@ -132,7 +133,7 @@ def alerts_summary():
 
 
 @router.get("/alerts/{alert_id}")
-def get_alert(alert_id: str):
+def get_alert(alert_id: str, current_user: dict = Depends(require_role("security_analyst", "security_manager", "admin"))):
     alerts = _load_alerts()
     for a in alerts:
         if a["id"] == alert_id:
@@ -141,7 +142,7 @@ def get_alert(alert_id: str):
 
 
 @router.patch("/alerts/{alert_id}/status")
-def update_alert_status(alert_id: str, payload: StatusUpdate):
+def update_alert_status(alert_id: str, payload: StatusUpdate, current_user: dict = Depends(require_role("security_analyst", "security_manager", "admin"))):
     if payload.status not in {"open", "acknowledged", "resolved"}:
         raise HTTPException(status_code=400, detail="status must be 'open', 'acknowledged', or 'resolved'")
 

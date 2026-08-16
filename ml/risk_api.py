@@ -1,4 +1,5 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
+from app.rbac import require_role
 import pandas as pd
 import os
 
@@ -17,19 +18,19 @@ def load_scores():
 
 
 @router.get("/risk-scores")
-def get_all_risk_scores():
+def get_all_risk_scores(current_user: dict = Depends(require_role("security_analyst", "security_manager", "admin"))):
     df = load_scores()
     return df.to_dict(orient="records")
 
 
 @router.get("/risk-scores/summary")
-def get_summary():
+def get_summary(current_user: dict = Depends(require_role("security_analyst", "security_manager", "admin"))):
     df = load_scores()
     return df["risk_category"].value_counts().to_dict()
 
 
 @router.get("/risk-scores/{user}")
-def get_user_risk(user: str):
+def get_user_risk(user: str, current_user: dict = Depends(require_role("security_analyst", "security_manager", "admin"))):
     df = load_scores()
     row = df[df["user"] == user]
     if row.empty:

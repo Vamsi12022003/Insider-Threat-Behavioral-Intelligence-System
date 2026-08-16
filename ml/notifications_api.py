@@ -30,7 +30,8 @@ What is NOT implemented, and why:
   file to extend.
 """
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+from app.rbac import require_role
 from typing import List
 from datetime import datetime, timezone
 import os
@@ -59,7 +60,7 @@ def _hours_since(iso_ts: str) -> float:
 
 
 @router.get("/notifications")
-def list_notifications():
+def list_notifications(current_user: dict = Depends(require_role("security_analyst", "security_manager", "admin"))):
     alerts = _load_json(ALERTS_PATH)
     incidents = _load_json(INCIDENTS_PATH)
 
@@ -106,7 +107,7 @@ def list_notifications():
 
 
 @router.get("/notifications/summary")
-def notifications_summary():
+def notifications_summary(current_user: dict = Depends(require_role("security_analyst", "security_manager", "admin"))):
     feed = list_notifications()
     summary = {"insider_threat_alert": 0, "escalation_alert": 0, "investigation_notification": 0}
     for n in feed:

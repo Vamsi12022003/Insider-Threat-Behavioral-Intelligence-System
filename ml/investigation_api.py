@@ -22,7 +22,8 @@ later, this is the place to swap in a real Incident table.
 Run via: wired into backend/app/main.py as a router (see instructions).
 """
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
+from app.rbac import require_role
 from pydantic import BaseModel
 from typing import Optional, List
 import pandas as pd
@@ -76,7 +77,7 @@ def _get_user_timeline(user: str) -> List[dict]:
 
 
 @router.post("/incidents")
-def create_incident(payload: IncidentCreate):
+def create_incident(payload: IncidentCreate, current_user: dict = Depends(require_role("security_analyst", "security_manager", "admin"))):
     timeline = _get_user_timeline(payload.user)
     if not timeline:
         raise HTTPException(
@@ -105,12 +106,12 @@ def create_incident(payload: IncidentCreate):
 
 
 @router.get("/incidents")
-def list_incidents():
+def list_incidents(current_user: dict = Depends(require_role("security_analyst", "security_manager", "admin"))):
     return _load_incidents()
 
 
 @router.get("/incidents/{incident_id}")
-def get_incident(incident_id: str):
+def get_incident(incident_id: str, current_user: dict = Depends(require_role("security_analyst", "security_manager", "admin"))):
     incidents = _load_incidents()
     for inc in incidents:
         if inc["incident_id"] == incident_id:
@@ -121,7 +122,7 @@ def get_incident(incident_id: str):
 
 
 @router.patch("/incidents/{incident_id}/status")
-def update_status(incident_id: str, payload: StatusUpdate):
+def update_status(incident_id: str, payload: StatusUpdate, current_user: dict = Depends(require_role("security_analyst", "security_manager", "admin"))):
     if payload.status not in VALID_STATUSES:
         raise HTTPException(
             status_code=400,
