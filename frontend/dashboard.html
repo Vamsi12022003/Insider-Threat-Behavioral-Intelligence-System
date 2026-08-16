@@ -205,11 +205,20 @@
     </table>
   </div>
 
+  <div id="notificationsTab" class="tab">
+    <h2>Notifications</h2>
+    <div class="summary" id="notificationsSummary"></div>
+    <table>
+      <thead><tr><th>Kind</th><th>User</th><th>Severity</th><th>Message</th><th>Status</th><th>Created</th></tr></thead>
+      <tbody id="notificationsTableBody"></tbody>
+    </table>
+  </div>
+
   <div id="employeesTab" class="tab">
     <h2>Employee Directory</h2>
     <input type="text" id="employeeSearchBox" placeholder="Filter by name or ID...">
     <table>
-      <thead><tr><th>Employee ID</th><th>Full Name</th><th>Department</th><th>Designation</th><th>Manager</th><th>Access</th></tr></thead>
+      <thead><tr><th>Employee ID</th><th>Full Name</th><th>Department</th><th>Designation</th><th>Manager</th><th>Device Info</th><th>Access</th></tr></thead>
       <tbody id="employeesTableBody"></tbody>
     </table>
   </div>
@@ -220,9 +229,9 @@
 const API_BASE = "http://127.0.0.1:8000";
 
 const ROLE_TABS = {
-  security_analyst: ["predictTab", "riskTab", "incidentsTab", "alertsTab"],
-  security_manager: ["riskTab", "alertsTab"],
-  admin:            ["predictTab", "riskTab", "incidentsTab", "alertsTab", "employeesTab"],
+  security_analyst: ["predictTab", "riskTab", "incidentsTab", "alertsTab", "notificationsTab"],
+  security_manager: ["riskTab", "alertsTab", "notificationsTab"],
+  admin:            ["predictTab", "riskTab", "incidentsTab", "alertsTab", "employeesTab", "notificationsTab"],
 };
 const TAB_LABELS = {
   predictTab: "Prediction",
@@ -230,6 +239,7 @@ const TAB_LABELS = {
   incidentsTab: "Incidents",
   alertsTab: "Alerts",
   employeesTab: "Employees",
+  notificationsTab: "Notifications",
 };
 
 function decodeJwtPayload(token) {
@@ -286,6 +296,7 @@ if (allowedTabs.length === 0) {
   if (allowedTabs.includes("incidentsTab")) { loadIncidents(); }
   if (allowedTabs.includes("alertsTab")) { loadAlerts(); loadAlertsSummary(); }
   if (allowedTabs.includes("employeesTab")) { loadEmployees(); }
+  if (allowedTabs.includes("notificationsTab")) { loadNotifications(); }
 }
 
 async function loadSummary() {
@@ -483,7 +494,40 @@ function renderEmployeesTable(rows) {
       <td>${emp.department ?? "-"}</td>
       <td>${emp.designation ?? "-"}</td>
       <td>${emp.manager ?? "-"}</td>
+      <td>${emp.device_info ?? "-"}</td>
       <td>${emp.access_privileges ?? "-"}</td>
+    </tr>`;
+  });
+}
+async function loadNotifications() {
+  const res = await fetch(`${API_BASE}/notifications`, {
+    headers: { "Authorization": `Bearer ${token}` }
+  });
+  const data = await res.json();
+  renderNotificationsTable(data);
+
+  const summaryRes = await fetch(`${API_BASE}/notifications/summary`, {
+    headers: { "Authorization": `Bearer ${token}` }
+  });
+  const summary = await summaryRes.json();
+  const div = document.getElementById("notificationsSummary");
+  div.innerHTML = "";
+  for (const [kind, count] of Object.entries(summary)) {
+    div.innerHTML += `<div class="card"><h2>${count}</h2><p>${kind.replace(/_/g, " ")}</p></div>`;
+  }
+}
+
+function renderNotificationsTable(rows) {
+  const tbody = document.getElementById("notificationsTableBody");
+  tbody.innerHTML = "";
+  rows.forEach(n => {
+    tbody.innerHTML += `<tr>
+      <td>${n.kind.replace(/_/g, " ")}</td>
+      <td>${n.user}</td>
+      <td>${n.severity ?? "-"}</td>
+      <td>${n.message}</td>
+      <td>${n.status}</td>
+      <td>${new Date(n.created_at).toLocaleString()}</td>
     </tr>`;
   });
 }
