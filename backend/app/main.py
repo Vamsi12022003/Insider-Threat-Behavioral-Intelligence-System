@@ -13,6 +13,7 @@ from predict_api import router as predict_router
 from investigation_api import router as investigation_router
 from ueba_api import router as ueba_router
 from alerts_api import router as alerts_router
+from notifications_api import router as notifications_router
 
 models.Base.metadata.create_all(bind=engine)
 app = FastAPI(title="Insider Threat Behavioral Intelligence System")
@@ -28,6 +29,7 @@ app.include_router(predict_router)
 app.include_router(investigation_router)
 app.include_router(ueba_router)
 app.include_router(alerts_router)
+app.include_router(notifications_router)
 
 @app.post("/register", response_model=schemas.UserOut)
 def register(user: schemas.UserCreate, db: Session = Depends(get_db)):
