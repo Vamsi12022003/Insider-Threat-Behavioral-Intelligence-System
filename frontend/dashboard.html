@@ -300,7 +300,7 @@ if (allowedTabs.length === 0) {
 }
 
 async function loadSummary() {
-  const res = await fetch(`${API_BASE}/risk-scores/summary`);
+  const res = await fetch(`${API_BASE}/risk-scores/summary`, { headers: { "Authorization": `Bearer ${token}` } });
   const data = await res.json();
   const summaryDiv = document.getElementById("summary");
   summaryDiv.innerHTML = "";
@@ -310,7 +310,7 @@ async function loadSummary() {
 }
 
 async function loadRiskScores() {
-  const res = await fetch(`${API_BASE}/risk-scores`);
+  const res = await fetch(`${API_BASE}/risk-scores`, { headers: { "Authorization": `Bearer ${token}` } });
   const data = await res.json();
   renderRiskTable(data);
   document.getElementById("searchBox").addEventListener("input", (e) => {
@@ -332,7 +332,7 @@ function renderRiskTable(rows) {
 }
 
 async function loadIncidents() {
-  const res = await fetch(`${API_BASE}/incidents`);
+  const res = await fetch(`${API_BASE}/incidents`, { headers: { "Authorization": `Bearer ${token}` } });
   const data = await res.json();
   const tbody = document.getElementById("incidentsTableBody");
   tbody.innerHTML = "";
@@ -420,7 +420,7 @@ function renderPredictionResult(data) {
 }
 
 async function loadAlertsSummary() {
-  const res = await fetch(`${API_BASE}/alerts/summary`);
+  const res = await fetch(`${API_BASE}/alerts/summary`, { headers: { "Authorization": `Bearer ${token}` } });
   const data = await res.json();
   const div = document.getElementById("alertsSummary");
   div.innerHTML = "";
@@ -430,7 +430,7 @@ async function loadAlertsSummary() {
 }
 
 async function loadAlerts() {
-  const res = await fetch(`${API_BASE}/alerts`);
+  const res = await fetch(`${API_BASE}/alerts`, { headers: { "Authorization": `Bearer ${token}` } });
   const data = await res.json();
   const tbody = document.getElementById("alertsTableBody");
   tbody.innerHTML = "";
@@ -454,7 +454,7 @@ async function loadAlerts() {
 async function updateAlertStatus(alertId, status) {
   await fetch(`${API_BASE}/alerts/${alertId}/status`, {
     method: "PATCH",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
     body: JSON.stringify({ status }),
   });
   loadAlerts();
@@ -462,7 +462,7 @@ async function updateAlertStatus(alertId, status) {
 }
 
 async function generateAlerts() {
-  const res = await fetch(`${API_BASE}/alerts/generate`, { method: "POST" });
+  const res = await fetch(`${API_BASE}/alerts/generate`, { method: "POST", headers: { "Authorization": `Bearer ${token}` } });
   const data = await res.json();
   alert(`Generated ${data.generated} new alert(s).`);
   loadAlerts();
