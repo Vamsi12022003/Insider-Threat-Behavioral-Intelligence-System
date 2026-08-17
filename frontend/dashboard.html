@@ -163,6 +163,22 @@
             <button onclick="stepField('after_hours_ratio',0.1)">+</button>
           </div>
         </div>
+        <div>
+          <label class="field-label">File Count</label>
+          <div class="stepper">
+            <button onclick="stepField('file_count',-1)">-</button>
+            <input type="number" id="f_file_count" value="0">
+            <button onclick="stepField('file_count',1)">+</button>
+          </div>
+        </div>
+        <div>
+          <label class="field-label">Unique Files</label>
+          <div class="stepper">
+            <button onclick="stepField('unique_files',-1)">-</button>
+            <input type="number" id="f_unique_files" value="0">
+            <button onclick="stepField('unique_files',1)">+</button>
+          </div>
+        </div>
       </div>
       <button class="action" onclick="runManualPrediction()">Predict Risk</button>
     </div>
@@ -364,7 +380,7 @@ function stepField(field, delta) {
 }
 
 async function runManualPrediction() {
-  const cols = ["user", "day", "logon_count", "logoff_count", "unique_pcs", "after_hours_ratio", "device_connects"];
+  const cols = ["user", "day", "logon_count", "logoff_count", "unique_pcs", "after_hours_ratio", "device_connects", "file_count", "unique_files"];
   const row = {
     user: "manual_input",
     day: new Date().toISOString().slice(0, 10),
@@ -373,6 +389,8 @@ async function runManualPrediction() {
     unique_pcs: document.getElementById("f_unique_pcs").value || 0,
     after_hours_ratio: document.getElementById("f_after_hours_ratio").value || 0,
     device_connects: document.getElementById("f_device_connects").value || 0,
+    file_count: document.getElementById("f_file_count").value || 0,
+    unique_files: document.getElementById("f_unique_files").value || 0,
   };
   const csv = cols.join(",") + "\n" + cols.map(c => row[c]).join(",") + "\n";
   const blob = new Blob([csv], { type: "text/csv" });
