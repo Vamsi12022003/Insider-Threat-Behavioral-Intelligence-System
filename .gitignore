@@ -2,3 +2,5 @@
 __pycache__/
 backend/app/__pycache__/
 datasets/file.csv
+ml/test_predict_*.csv
+ml/manual_predictions_log.csv
