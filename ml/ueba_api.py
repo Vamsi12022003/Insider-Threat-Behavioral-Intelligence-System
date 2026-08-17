@@ -33,7 +33,7 @@ BASE_DIR = os.path.dirname(__file__)
 FEATURES_PATH = os.path.join(BASE_DIR, "user_daily_features.csv")
 ANOMALY_REPORT_PATH = os.path.join(BASE_DIR, "anomaly_report.csv")
 
-FEATURE_COLS = ["logon_count", "logoff_count", "unique_pcs", "after_hours_ratio", "device_connects"]
+FEATURE_COLS = ["logon_count", "logoff_count", "unique_pcs", "after_hours_ratio", "device_connects", "file_count", "unique_files"]
 
 
 def _load_features():

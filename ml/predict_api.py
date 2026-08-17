@@ -11,7 +11,7 @@ MODEL_PATH = os.path.join(os.path.dirname(__file__), "insider_model.pkl")
 BASELINES_PATH = os.path.join(os.path.dirname(__file__), "user_baselines.csv")
 MANUAL_LOG_PATH = os.path.join(os.path.dirname(__file__), "manual_predictions_log.csv")
 
-FEATURE_COLS = ["logon_count", "logoff_count", "unique_pcs", "after_hours_ratio", "device_connects"]
+FEATURE_COLS = ["logon_count", "logoff_count", "unique_pcs", "after_hours_ratio", "device_connects", "file_count", "unique_files"]
 
 _model = None
 _baselines = None

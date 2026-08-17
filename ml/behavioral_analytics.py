@@ -12,6 +12,12 @@ Covers all 5 milestone tasks:
 Also saves the trained model + per-user baselines to disk so a separate
 live-prediction endpoint (predict_api.py) can score new incoming rows
 without retraining.
+
+UPDATE: added file_count / unique_files from datasets/file.csv (real
+CERT r4.2 file-access log), extending the feature set from 5 to 7.
+email.csv / http.csv were NOT downloaded (multi-GB, not worth the
+time cost for this project) - email/HTTP features remain undone,
+disclosed rather than fabricated.
 """
 
 import pandas as pd
@@ -21,6 +27,7 @@ from sklearn.ensemble import IsolationForest
 
 LOGON_PATH = "../datasets/logon.csv"
 DEVICE_PATH = "../datasets/device.csv"
+FILE_PATH = "../datasets/file.csv"
 OUTPUT_REPORT = "anomaly_report.csv"
 OUTPUT_FEATURES = "user_daily_features.csv"
 OUTPUT_MODEL = "insider_model.pkl"
@@ -30,14 +37,15 @@ OUTPUT_BASELINES = "user_baselines.csv"
 def load_data():
     logon = pd.read_csv(LOGON_PATH, parse_dates=["date"])
     device = pd.read_csv(DEVICE_PATH, parse_dates=["date"])
-    return logon, device
+    file_events = pd.read_csv(FILE_PATH, parse_dates=["date"])
+    return logon, device, file_events
 
 
 # ---------------------------------------------------------------------
 # TASK 1: Behavioral Profiling Engine
 # Turn raw event logs into per-user, per-day behavioral features
 # ---------------------------------------------------------------------
-def build_daily_features(logon, device):
+def build_daily_features(logon, device, file_events):
     logon = logon.copy()
     logon["day"] = logon["date"].dt.date
     logon["hour"] = logon["date"].dt.hour
@@ -62,8 +70,18 @@ def build_daily_features(logon, device):
         device_connects=("activity", lambda x: (x == "Connect").sum()),
     ).reset_index()
 
+    file_events = file_events.copy()
+    file_events["day"] = file_events["date"].dt.date
+    file_daily = file_events.groupby(["user", "day"]).agg(
+        file_count=("filename", "count"),
+        unique_files=("filename", "nunique"),
+    ).reset_index()
+
     features = pd.merge(logon_daily, device_daily, on=["user", "day"], how="left")
+    features = pd.merge(features, file_daily, on=["user", "day"], how="left")
     features["device_connects"] = features["device_connects"].fillna(0)
+    features["file_count"] = features["file_count"].fillna(0)
+    features["unique_files"] = features["unique_files"].fillna(0)
 
     return features
 
@@ -75,7 +93,8 @@ def build_daily_features(logon, device):
 def add_user_baselines(features):
     feature_cols = [
         "logon_count", "logoff_count", "unique_pcs",
-        "after_hours_ratio", "device_connects"
+        "after_hours_ratio", "device_connects",
+        "file_count", "unique_files",
     ]
 
     baselines = features.groupby("user")[feature_cols].agg(["mean", "std"])
@@ -153,11 +172,11 @@ def save_model_and_baselines(features, model, feature_cols):
 
 def main():
     print("Loading data...")
-    logon, device = load_data()
-    print(f"  logon events: {len(logon):,} | device events: {len(device):,}")
+    logon, device, file_events = load_data()
+    print(f"  logon events: {len(logon):,} | device events: {len(device):,} | file events: {len(file_events):,}")
 
     print("\n[Task 1] Building behavioral profiles (daily features per user)...")
-    features = build_daily_features(logon, device)
+    features = build_daily_features(logon, device, file_events)
     print(f"  {len(features):,} user-day records created")
 
     print("\n[Task 2] Computing behavioral baselines & deviations...")
