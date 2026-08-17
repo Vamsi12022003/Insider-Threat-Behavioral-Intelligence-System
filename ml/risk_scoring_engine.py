@@ -11,34 +11,45 @@ The project spec's weighted risk model calls for 5 categories:
     Access Pattern Deviations 10%
     Historical Security Events 10%
 
-Only "Behavioral Anomalies" has real underlying data (anomaly_report.csv,
-produced by Milestone 2's Isolation Forest pipeline over logon/device logs).
-There is no privilege-change log, no file/data-access log, and no historical
-incident log in this project. Rather than invent numbers for those 4
-categories, this engine scores users on Behavioral Anomalies ONLY and
-documents the other categories as "not computed - no data source" in the
-output. This is a deliberate, disclosed limitation, not an oversight.
+Two categories have real underlying data:
+  - Behavioral Anomalies (anomaly_report.csv, from Milestone 2's Isolation
+    Forest pipeline over logon/device logs)
+  - Data Access Violations (from datasets/file.csv, real CERT r4.2
+    file-access log - file_count/unique_files features added later)
+Combined these total 55% of the spec's weight. Weights are NOT renormalized
+to 100% - the score is reported on its true 0-0.55 scale so it never implies
+coverage the project doesn't have.
 
-If/when logs for the other categories become available (e.g. file access,
-privilege change events), the WEIGHTS dict and score calculation below are
-structured so those categories can be added without a rewrite.
+There is still no privilege-change log, no separate access-pattern log, and
+no historical incident log in this project. Those 3 categories (45% of spec
+weight) remain "NOT COMPUTED - no data source" in the output. This is a
+deliberate, disclosed limitation, not an oversight.
+
+If/when logs for the remaining categories become available, the WEIGHTS dict
+and score calculation below are structured so they can be added without a
+rewrite.
 """
 
 import pandas as pd
 import numpy as np
 
 INPUT_REPORT = "anomaly_report.csv"
+INPUT_FEATURES = "user_daily_features.csv"
 OUTPUT_RISK_SCORES = "user_risk_scores.csv"
 
 # Only category with real data right now. Kept as a dict so it's obvious
 # how/where to plug in the other 4 categories later.
 WEIGHTS = {
-    "behavioral_anomalies": 1.00,   # 100% of computed score (spec says 35%)
+    "behavioral_anomalies": 0.35,     # matches spec weight
+    "data_access_violations": 0.20,   # matches spec weight - NOW COMPUTED from file.csv
     # "privilege_misuse":        0.25,  # NOT COMPUTED - no privilege log
-    # "data_access_violations":  0.20,  # NOT COMPUTED - no file/data-access log
     # "access_pattern_deviation":0.10,  # NOT COMPUTED - no separate access log
     # "historical_security":     0.10,  # NOT COMPUTED - no incident history log
 }
+# NOTE: weights sum to 0.55, not 1.00 - deliberately NOT renormalized.
+# Score reflects only the 2 categories with real data; max possible score is 55,
+# not 100, so it stays literally true to the spec's weighting rather than
+# implying full coverage.
 
 RISK_BUCKETS = [
     (0.75, "Critical"),
@@ -50,6 +61,11 @@ RISK_BUCKETS = [
 
 def load_anomalies():
     df = pd.read_csv(INPUT_REPORT, parse_dates=["day"])
+    return df
+
+
+def load_features():
+    df = pd.read_csv(INPUT_FEATURES, parse_dates=["day"])
     return df
 
 
@@ -92,20 +108,57 @@ def compute_behavioral_anomaly_component(df):
                 "worst_anomaly_score", "behavioral_anomalies"]]
 
 
+def compute_data_access_component(features_df):
+    """
+    Aggregate per-user file-access activity (file_count, unique_files from
+    datasets/file.csv) into a single 0-1 'badness' score for Data Access
+    Violations. Uses the same per-user mean-zscore + peak-zscore blend
+    pattern as the behavioral anomaly component for consistency.
+    """
+    agg = features_df.groupby("user").agg(
+        mean_file_zscore=("file_count_zscore", "mean"),
+        peak_file_zscore=("file_count_zscore", "max"),
+        mean_unique_files_zscore=("unique_files_zscore", "mean"),
+        peak_unique_files_zscore=("unique_files_zscore", "max"),
+    ).reset_index()
+
+    def normalize(s):
+        rng = s.max() - s.min()
+        if rng == 0:
+            return pd.Series(0.0, index=s.index)
+        return (s - s.min()) / rng
+
+    file_norm = normalize(agg["mean_file_zscore"])
+    peak_file_norm = normalize(agg["peak_file_zscore"])
+    unique_norm = normalize(agg["mean_unique_files_zscore"])
+
+    agg["data_access_violations"] = (
+        0.4 * file_norm + 0.3 * peak_file_norm + 0.3 * unique_norm
+    )
+
+    return agg[["user", "mean_file_zscore", "peak_file_zscore", "data_access_violations"]]
+
+
 def compute_insider_risk_score(agg):
     agg = agg.copy()
-    agg["insider_risk_score"] = agg["behavioral_anomalies"] * WEIGHTS["behavioral_anomalies"]
+    agg["insider_risk_score"] = (
+        agg["behavioral_anomalies"] * WEIGHTS["behavioral_anomalies"]
+        + agg["data_access_violations"] * WEIGHTS["data_access_violations"]
+    )
+    # Score is on a 0-0.55 scale (weights not renormalized - see note above).
+    # Convert risk buckets to the same scale so categorization stays meaningful.
+    scaled_buckets = [(t * sum(WEIGHTS.values()), label) for t, label in RISK_BUCKETS]
 
     def bucket(score):
-        for threshold, label in RISK_BUCKETS:
+        for threshold, label in scaled_buckets:
             if score >= threshold:
                 return label
         return "Low"
 
     agg["risk_category"] = agg["insider_risk_score"].apply(bucket)
 
-    # Explicit disclosure columns - so the CSV itself documents the limitation
-    for missing_cat in ["privilege_misuse_indicators", "data_access_violations",
+    # Remaining categories still genuinely have no data source - disclosed, not fabricated
+    for missing_cat in ["privilege_misuse_indicators",
                          "access_pattern_deviations", "historical_security_events"]:
         agg[missing_cat] = "NOT COMPUTED - no data source"
 
@@ -128,8 +181,16 @@ def main():
     df = load_anomalies()
     print(f"  {len(df):,} anomalous user-day records, {df['user'].nunique()} unique users")
 
-    print("\nComputing behavioral anomaly component (only scoreable category)...")
+    print("\nLoading daily features (for data access component)...")
+    features_df = load_features()
+
+    print("\nComputing behavioral anomaly component...")
     agg = compute_behavioral_anomaly_component(df)
+
+    print("Computing data access violations component (from file.csv)...")
+    data_access_agg = compute_data_access_component(features_df)
+    agg = pd.merge(agg, data_access_agg, on="user", how="left")
+    agg["data_access_violations"] = agg["data_access_violations"].fillna(0)
 
     print("Computing insider risk scores...")
     agg = compute_insider_risk_score(agg)
@@ -140,8 +201,9 @@ def main():
     ordered_cols = [
         "user", "insider_risk_score", "risk_category",
         "anomalous_day_count", "mean_anomaly_score", "worst_anomaly_score",
+        "data_access_violations", "mean_file_zscore", "peak_file_zscore",
         "most_common_anomaly_trigger",
-        "privilege_misuse_indicators", "data_access_violations",
+        "privilege_misuse_indicators",
         "access_pattern_deviations", "historical_security_events",
     ]
     agg[ordered_cols].to_csv(OUTPUT_RISK_SCORES, index=False)
@@ -152,9 +214,9 @@ def main():
     print("\nTop 10 highest-risk users:")
     print(agg[ordered_cols[:6]].head(10).to_string(index=False))
 
-    print("\nNOTE: Score reflects Behavioral Anomalies only (100% weight applied here).")
-    print("Per the project spec's 5-category model, Privilege Misuse, Data Access")
-    print("Violations, Access Pattern Deviations, and Historical Security Events")
+    print("\nNOTE: Score reflects Behavioral Anomalies (35%) + Data Access Violations (20%)")
+    print("= 55% of spec weight, computed from real data (logon/device logs + file.csv).")
+    print("Privilege Misuse, Access Pattern Deviations, and Historical Security Events")
     print("are NOT included - no underlying log data exists for them in this project.")
 
 
