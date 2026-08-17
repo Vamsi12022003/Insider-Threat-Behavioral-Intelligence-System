@@ -80,40 +80,42 @@ Documented honestly rather than hidden:
 - DB schema documentation exists at `docs/DATABASE_SCHEMA.md` and includes these gaps explicitly.
 
 ## Project Structure
+
+```
 Insider-Threat-Behavioral-Intelligence-System/
 ├── backend/
-│ └── app/
-│ ├── auth.py
-│ ├── models.py
-│ ├── schemas.py
-│ ├── rbac.py
-│ ├── database.py
-│ └── main.py
+│   └── app/
+│       ├── auth.py
+│       ├── models.py
+│       ├── schemas.py
+│       ├── rbac.py
+│       ├── database.py
+│       └── main.py
 ├── ml/
-│ ├── behavioral_analytics.py
-│ ├── risk_scoring_engine.py
-│ ├── risk_api.py
-│ ├── risk_dashboard.py
-│ ├── predict_api.py
-│ ├── investigation_api.py
-│ ├── ueba_api.py
-│ ├── alerts_api.py
-│ └── manual_predictions_log.csv
+│   ├── behavioral_analytics.py
+│   ├── risk_scoring_engine.py
+│   ├── risk_api.py
+│   ├── risk_dashboard.py
+│   ├── predict_api.py
+│   ├── investigation_api.py
+│   ├── ueba_api.py
+│   ├── alerts_api.py
+│   └── manual_predictions_log.csv
 ├── frontend/
-│ ├── index.html
-│ ├── dashboard.html
-│ ├── predict.html
-│ └── risk_scores.html
+│   ├── index.html
+│   ├── dashboard.html
+│   ├── predict.html
+│   └── risk_scores.html
 ├── datasets/
 ├── docs/
-│ ├── DATABASE_SCHEMA.md
-│ └── wireframes/
+│   ├── DATABASE_SCHEMA.md
+│   └── wireframes/
 ├── tests/
-│ └── test_api.py
+│   └── test_api.py
 ├── docker/
 ├── Dockerfile
 └── README.md
-
+```
 
 ## Dataset
 
@@ -165,5 +167,3 @@ AI Intern, Infosys Springboard
 ## License
 
 This project is developed for educational purposes as part of the Infosys Springboard internship program.
-READMEEOF
-diff README.md README.md.bak
