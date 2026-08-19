@@ -30,14 +30,7 @@ Traditional security tools focus on external threats. This system focuses on the
 
 ## Project Status
 
-**Status: Core system complete and containerized.**
-
-| Milestone | Focus | Status |
-|---|---|---|
-| Milestone 1 (Week 1-2) | Project setup, auth, RBAC, DB schema doc, wireframes | ✅ Complete (log ingestion still manual) |
-| Milestone 2 (Week 3-4) | Behavioral profiling & anomaly detection | ✅ Complete (7 features, incl. file-access data) |
-| Milestone 3 (Week 5-6) | Risk scoring, threat investigation, UEBA, live prediction | ✅ Complete (scoped — see gaps) |
-| Milestone 4 (Week 7-8) | Dashboards, alerts, notifications, testing & Docker deployment | ✅ Complete |
+Core system built and verified — authentication, behavioral analytics, anomaly detection, risk scoring, threat investigation, UEBA, alerts, notifications, and Docker containerization are all implemented and tested end-to-end. See **Known Gaps** below for what is explicitly out of scope.
 
 ## Docker Deployment
 
