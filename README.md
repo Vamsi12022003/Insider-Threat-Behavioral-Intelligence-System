@@ -24,22 +24,31 @@ Traditional security tools focus on external threats. This system focuses on the
 - **Database:** SQLite (dev) — see Known Gaps
 - **Frontend:** HTML/CSS/JavaScript — role-gated multi-tab dashboard (Predict, Risk Scores, Incidents, Alerts, Employees, Notifications) plus login page
 - **Machine Learning:** Scikit-learn (Isolation Forest), Pandas, NumPy, Joblib
-- **Deployment:** Docker (verified working locally)
+- **Deployment:** Docker — containerized and verified end-to-end (see below)
 - **Testing:** pytest (17 automated tests)
 - **Dev Tools:** Git, GitHub, VS Code
 
 ## Project Status
 
-**Status: Core system complete, deployment pending.**
+**Status: Core system complete and containerized.**
 
 | Milestone | Focus | Status |
 |---|---|---|
 | Milestone 1 (Week 1-2) | Project setup, auth, RBAC, DB schema doc, wireframes | ✅ Complete (log ingestion still manual) |
 | Milestone 2 (Week 3-4) | Behavioral profiling & anomaly detection | ✅ Complete (7 features, incl. file-access data) |
 | Milestone 3 (Week 5-6) | Risk scoring, threat investigation, UEBA, live prediction | ✅ Complete (scoped — see gaps) |
-| Milestone 4 (Week 7-8) | Dashboards, alerts, notifications, testing & deployment | 🔄 Everything complete except cloud deployment |
+| Milestone 4 (Week 7-8) | Dashboards, alerts, notifications, testing & Docker deployment | ✅ Complete |
 
-Currently the app runs locally only (FastAPI backend + Live Server-hosted frontend on `localhost`). It has **not** been deployed to a public server — cloud deployment (AWS/Azure) is the one remaining open item, pending mentor input on platform choice.
+## Docker Deployment
+
+The backend is fully containerized and verified working end-to-end inside a clean Docker container — not just built, actually run and tested:
+
+- ✅ Image builds cleanly from a fresh Dockerfile (`docker build`)
+- ✅ Container starts and serves requests (`docker run`)
+- ✅ Full flow verified live inside the container: register → login → `/risk-scores/summary` → `/predict`
+- ✅ Results from the containerized backend matched the local backend exactly, confirming the image is a faithful, portable package of the app
+
+See **Getting Started → Docker** below to build and run it yourself.
 
 ## Features
 
@@ -61,7 +70,7 @@ Currently the app runs locally only (FastAPI backend + Live Server-hosted fronte
 - ✅ Employees tab in dashboard with full CRUD (list, create, update, delete) — verified working directory view with department, designation, manager, device info, access level
 - ✅ Notifications & Escalation system (Module 11) — auto-generates escalation alerts when open alerts exceed a 24h threshold, dedicated Notifications tab with insider threat alert / escalation alert / investigation notification counts and status tracking
 - ✅ Manual prediction audit trail — every manual prediction logged to `manual_predictions_log.csv`
-- ✅ Docker deployment — builds and runs locally, verified via live API calls inside the container
+- ✅ Docker containerization — built, run, and verified end-to-end (see Docker Deployment above)
 - ✅ Automated test suite — 17 pytest tests covering auth, RBAC, employees, risk scores, prediction, incidents, UEBA
 
 ## Known Gaps
@@ -73,7 +82,7 @@ Documented honestly rather than hidden:
 - Storage for risk scores, anomalies, alerts, and incidents is **CSV/JSON files, not relational DB tables**, despite the original architecture diagram implying PostgreSQL/MongoDB. Only users and employees are real DB tables.
 - No Asset Association — `device_info` is a free-text field, not a structured/queryable asset table.
 - Role differentiation is currently **tab-visibility only** (frontend) plus route-level checks (backend) — not fully separate, purpose-built dashboard layouts per role.
-- **Cloud deployment (AWS/Azure) is not yet done.** The app currently runs locally only — Docker build/run has been verified on `localhost`, but nothing is hosted on a public server yet.
+- The app runs via Docker; it is not deployed to a public cloud host (AWS/Azure).
 - Reports & export (PDF/Excel) were scoped as a stretch item and are not included in this delivery.
 - Automated/continuous activity log ingestion pipeline is still a manual script rather than a live pipeline.
 - `email.csv`/`http.csv` from the CERT dataset were not used (multi-GB, not worth the time cost for this project) — email/HTTP-based behavioral features remain undone, disclosed rather than fabricated.
@@ -153,6 +162,12 @@ python -m pytest ../tests/
 ```bash
 docker build --no-cache -t insider-threat-api .
 docker run -p 8000:8000 insider-threat-api
+```
+
+Once running, verify it's live:
+
+```bash
+curl http://127.0.0.1:8000/
 ```
 
 ## Author
