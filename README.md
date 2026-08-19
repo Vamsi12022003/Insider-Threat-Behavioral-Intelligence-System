@@ -80,3 +80,90 @@ Documented honestly rather than hidden:
 - DB schema documentation exists at `docs/DATABASE_SCHEMA.md` and includes these gaps explicitly.
 
 ## Project Structure
+
+```
+Insider-Threat-Behavioral-Intelligence-System/
+├── backend/
+│   └── app/
+│       ├── auth.py
+│       ├── models.py
+│       ├── schemas.py
+│       ├── rbac.py
+│       ├── database.py
+│       └── main.py
+├── ml/
+│   ├── behavioral_analytics.py
+│   ├── risk_scoring_engine.py
+│   ├── risk_api.py
+│   ├── risk_dashboard.py
+│   ├── predict_api.py
+│   ├── investigation_api.py
+│   ├── ueba_api.py
+│   ├── alerts_api.py
+│   └── manual_predictions_log.csv
+├── frontend/
+│   ├── index.html
+│   ├── dashboard.html
+│   ├── predict.html
+│   └── risk_scores.html
+├── datasets/
+├── docs/
+│   ├── DATABASE_SCHEMA.md
+│   └── wireframes/
+├── tests/
+│   └── test_api.py
+├── docker/
+├── Dockerfile
+└── README.md
+```
+
+## Dataset
+
+This project uses the **CERT Insider Threat Dataset (r4.2)** — logon, device, and file-access activity logs — a widely-used academic dataset for insider threat research. `logon.csv`, `device.csv`, and `file.csv` were used; the full CERT release's ground-truth `answers/` folder (labeled malicious insiders) was not downloaded, so this project uses unsupervised anomaly detection rather than a labeled classifier. `email.csv`/`http.csv` were not downloaded (multi-GB, not worth the time cost for this project).
+
+## Getting Started
+
+### Prerequisites
+
+- Python 3.10+
+- Docker (optional, for containerized run)
+
+### Backend Setup
+
+```bash
+cd backend
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+python -m uvicorn app.main:app --reload
+```
+
+> **Note:** On Windows with Anaconda installed, use the full venv interpreter path if `python`/`uvicorn` resolve to the wrong environment:
+> `./venv/Scripts/python.exe -m uvicorn app.main:app --reload`
+
+### Running Tests
+
+```bash
+cd backend
+python -m pytest ../tests/
+```
+
+### Docker
+
+```bash
+docker build --no-cache -t insider-threat-api .
+docker run -p 8000:8000 insider-threat-api
+```
+
+## Author
+
+**Krishna Vamsi Pallapu**
+M.Tech AI & Data Science, KL University
+AI Intern, Infosys Springboard
+
+- GitHub: [Vamsi12022003](https://github.com/Vamsi12022003)
+- LinkedIn: [pallapu-krishna-vamsi](https://linkedin.com/in/pallapu-krishna-vamsi)
+
+## License
+
+This project is developed for educational purposes as part of the Infosys Springboard internship program.
